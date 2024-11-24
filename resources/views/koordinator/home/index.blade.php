@@ -49,45 +49,60 @@
 
     <div class="container my-custom-container">
         <div class="row mb-3">
-            <div class="col-12 text-centerß">
-                <div class="p-3 text-center">Selemat Datang Fariz</div>
+            <div class="col-12 text-center">
+                <form method="POST" action="/auth/koordinators/logout" class="p-3 text-center">Selemat Datang
+                    {{ Auth::user()->name }}
+                    @csrf
+                    <button class="btn btn-primary">Logout</button>
+                </form>
             </div>
 
         </div>
         <div class="row mb-3">
-            <div class="col-12 text-centerß">
-                <div class="text-center">Total Input Simpatisan</div>
-                <div class="text-center">100</div>
+            <div class="col-12 px-4">
+                <div class="">Total Input Simpatisan</div>
+                <div class="p-4" style="border:1px solid blue;">
+                    <div class="text-center">{{ $totalSimpatisan }}<span>Orang</div>
+                    <div class="d-flex justify-content-between">
+                        <div><span>Laki-laki</span> {{ $totalSimpatisanMale }}</div>
+                        <div><span>Perempuan</span> {{ $totalSimpatisanFemale }}</div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row mb-3">
-            <div class="col-12 text-centerß">
-                <div class="text-center">Total Input Pribadi</div>
-                <div class="text-center">100</div>
+            <div class="col-12 px-4">
+                <div class="">Total Input Pribadi</div>
+                <div class="p-4" style="border:1px solid blue;">
+                    <div class="row">
+
+                        <div class="col-6">{{ $totalSimpatisan }}<span>Orang</div>
+                        <div class="col-6">
+                            <div><span>Laki-laki</span> {{ $totalSimpatisanMale }}</div>
+                            <div><span>Perempuan</span> {{ $totalSimpatisanFemale }}</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div>
-            <div class="text-center">Pengambilan Data</div>
-            <div class="row border mb-1">
-                <div class="col-6">
-                    <div class="text">Nama Pemilih</div>
-                    <div class="text">Nama Pemilih</div>
-                </div>
-                <div class="col-6">
-                    <div class="d-flex justify-content-end">Anan</div>
-                    <div class="d-flex justify-content-end">Anan</div>
-                </div>
+            <div class="row mb-1">
+                <div class="col-12 px-4">Pengambilan Data</div>
             </div>
-            <div class="row border">
-                <div class="col-6">
-                    <div class="text">Nama Pemilih</div>
-                    <div class="text">Nama Pemilih</div>
+            @forelse ($simpatisans as $s)
+                <div class="row border-top py-4">
+                    <div class="col-6 px-4">
+                        <div class="text">{{ $s->name }}</div>
+                        <div class="text">40939433094343939</div>
+                    </div>
+                    <div class="col-6 px-4">
+                        <div class="d-flex justify-content-end">{{ $s->created_at }}</div>
+                    </div>
                 </div>
-                <div class="col-6">
-                    <div class="d-flex justify-content-end">Anan</div>
-                    <div class="d-flex justify-content-end">Anan</div>
-                </div>
-            </div>
+            @empty
+                <p>Belum Ada Anggota</p>
+            @endforelse
+
         </div>
 
         <a href="/koordinators/create" class="btn btn-icon btn-pills btn-success mt-2 btn-tambah">

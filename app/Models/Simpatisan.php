@@ -3,25 +3,26 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Notifications\Notifiable;
+
 
 class Simpatisan extends Model
 {
-      /** @use HasFactory<\Database\Factories\UserFactory> */
-      use HasFactory, Notifiable;
+    /** @use HasFactory<\Database\Factories\UserFactory> */
+    use HasFactory, Notifiable;
 
-      /**
-       * The attributes that are mass assignable.
-       *
-       * @var array<int, string>
-       */
-      protected $fillable = [
-          'name',
-          'gender',
-          'no_tps',
-          'foto_self',        
-          'foto_ktp',
-          'user_id'        
-      ];
-  
-
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'name',
+        'gender',
+        'no_tps',
+        'foto_self',
+        'foto_ktp',
+        'user_id'
+    ];
 }

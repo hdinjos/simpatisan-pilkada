@@ -65,8 +65,8 @@
             <div class="mb-3">
                 <label class="form-label">Jenis Kelamin</label>
                 <select name="gender" class="form-control">
-                    <option value="1">Laki-Laki</option>
-                    <option value="2">Perempuan</option>
+                    <option value="male">Laki-Laki</option>
+                    <option value="female">Perempuan</option>
                 </select>
             </div>
             <div class="col-12">

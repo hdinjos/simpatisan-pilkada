@@ -13,13 +13,12 @@ class AuthController extends Controller
     {
         //
         return view('koordinator/auth/form-login');
-
     }
 
-       //
+    //
     public function loginKoordinator(Request $request)
     {
-           //
+        //
         $credentials = $request->validate([
             'username' => ['required'],
             'password' => ['required'],
@@ -29,27 +28,16 @@ class AuthController extends Controller
             return $user->role == "KOOR";
         })) {
             return redirect('/koordinators');
-        }else {
+        } else {
             return redirect('/auth/koordinators/login');
         }
- 
-        // if (Auth::attemptWhen($credentials,  function (User $user) {
-        //     dd($user);
-        //     return $user->role== "KOOR";
-        // })) {
-        //     $request->session()->regenerate();
-        //     // dd($credentials);
+    }
 
- 
-        //     // return redirect()->intended('dashboard');
-        //     return redirect('/koordinators');
-
-        // }else {
-        //     dd($request->username);
-        //     return redirect('/auth/koordinators/login');
-
-        // }
-
-   
+    public function koordinatorLogout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/auth/koordinators/login');;
     }
 }

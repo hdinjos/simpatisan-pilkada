@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Simpatisan;
 
 
 class KoordinatorController extends Controller
@@ -16,8 +17,18 @@ class KoordinatorController extends Controller
         //
 
         // dd(Auth::user()->role);
-        return view('koordinator/home/index');
+        $userId = Auth::user()->id;
+        $totalSimpatisan = Simpatisan::count();
+        $totalSimpatisanMale = Simpatisan::where('gender', 'male')->count();
+        $totalSimpatisanFemale = Simpatisan::where('gender', 'female')->count();
 
+        $simpatisanByMe = Simpatisan::where('user_id', $userId)->count();
+        $simpatisanByMeMale = Simpatisan::where('user_id', $userId)->where('gender', 'male')->count();
+        $simpatisanByMeFeMale = Simpatisan::where('user_id', $userId)->where('gender', 'female')->count();;
+
+        $simpatisans = Simpatisan::where('user_id', $userId)->get();
+
+        return view('koordinator/home/index', compact('totalSimpatisan', 'totalSimpatisanMale', 'totalSimpatisanFemale',  'simpatisanByMe', 'simpatisanByMeMale', 'simpatisanByMeFeMale', 'simpatisans'));
     }
 
     /**
@@ -27,7 +38,6 @@ class KoordinatorController extends Controller
     {
         //
         return view('koordinator/home/create');
-
     }
 
     /**
@@ -36,7 +46,32 @@ class KoordinatorController extends Controller
     public function store(Request $request)
     {
         //
-        dd($request->name);
+
+
+        if ($request->hasFile('foto_self') && $request->hasFile('foto_ktp')) {
+
+            //upload new image
+            $imageSelf = $request->file('foto_self');
+            $imageKtp = $request->file('foto_ktp');
+            $imageselfHasname = $imageSelf->hashName();
+            $imageKtpHasname = $imageKtp->hashName();
+            $imageSelf->storeAs('public/image_self', $imageselfHasname);
+            $imageKtp->storeAs('public/image_ktp', $imageKtpHasname);
+
+            Simpatisan::create([
+                'name'      => $request->name,
+                'gender'    => $request->gender,
+                'no_tps'    => $request->no_tps,
+                'foto_self' => $imageselfHasname,
+                'foto_ktp'  => $imageKtpHasname,
+                'user_id'   => Auth::user()->id,
+
+            ]);
+            return redirect('/koordinators');
+        } else {
+            return $this()->index;
+        }
+        // dd($request->name);
     }
 
     /**
