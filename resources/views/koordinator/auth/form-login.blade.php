@@ -25,22 +25,19 @@
     <link href="{{ asset('css/tabler-icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="https://unicons.iconscout.com/release/v3.0.6/css/line.css" rel="stylesheet">
     <!-- Css -->
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" id="theme-opt" />
+    <link href="{{ asset('css/style2.css') }}" rel="stylesheet" type="text/css" id="theme-opt" />
     <style>
-        @media (min-width: 500px) {
-            .my-custom-container {
-                width: 500px;
-                border: 1px solid black;
-                height: 100vh;
-                /* position: relative; */
-            }
+        .my-custom-container {
+            width: 500px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: black;
+            color: white;
+            overflow-y: auto;
         }
-
-        /* .btn-tambah {
-            position: absolute;
-            bottom: 30px;
-            right: 30px;
-        } */
     </style>
 
 </head>
@@ -53,7 +50,10 @@
                 <div class="p-3 text-center">Selemat Datang Fariz</div>
             </div>
 
+        
         </div> --}}
+        <h3 class="text-primary">Selamat Datang </h3>
+        <p>Silahkan Login Dengan Akun Anda</p>
         <form class="row mb-3" method="POST" action="/auth/koordinators/login">
             @csrf
             <div class="col-12">
@@ -69,8 +69,8 @@
                 </div>
             </div>
 
-            <div class="d-flex justify-content-center mt-5">
-                <button class="btn btn-primary">Login</button>
+            <div class="d-flex justify-content-center mt-2">
+                <button class="text-black btn btn-primary w-100">Login</button>
             </div>
         </form>
 

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Landrick - Invoice List</title>
+    <title>Coblos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Premium Bootstrap 5 Admin Dashboard Template" />
     <meta name="keywords" content="Saas, CRM, Admin, Dashboard, Modern, Classic" />
@@ -25,21 +25,37 @@
     <link href="{{ asset('css/tabler-icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="https://unicons.iconscout.com/release/v3.0.6/css/line.css" rel="stylesheet">
     <!-- Css -->
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" id="theme-opt" />
+    <link href="{{ asset('css/style2.css') }}" rel="stylesheet" type="text/css" id="theme-opt" />
     <style>
-        @media (min-width: 500px) {
-            .my-custom-container {
-                width: 500px;
-                border: 1px solid black;
-                height: 100vh;
-                /* position: relative; */
-            }
+        .my-custom-container {
+            width: 500px;
+            min-height: 100vh;
+            /* display: flex; */
+            /* align-items: center; */
+            /* justify-content: center; */
+            /* flex-direction: column; */
+            background-color: black;
+            color: white;
+            overflow-y: auto;
+            /* position: relative; */
         }
 
         .btn-tambah {
             position: absolute;
             bottom: 30px;
             right: 30px;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        canvas {
+            width: 100%;
+            height: 380px;
+            border-radius: 10px;
         }
     </style>
 
@@ -50,7 +66,7 @@
     <div class="container my-custom-container">
         <div class="row mb-3">
             <div class="col-12 text-centerß">
-                <div class="p-3 text-center">Selemat Datang Fariz</div>
+                <div class="p-3 text-center">Tambah Data Partisipan</div>
             </div>
 
         </div>
@@ -59,59 +75,100 @@
             <div class="col-12">
                 <div class="mb-3">
                     <label class="form-label">Nama Pemilih <span class="text-danger">*</span></label>
-                    <input name="name" id="name" type="text" class="form-control" placeholder="Title :">
+                    <input required name="name" id="name" type="text" class="form-control" placeholder="">
                 </div>
             </div>
+            <div class="col-12">
+                <div class="mb-3">
+                    <label class="form-label">NIK <span class="text-danger">*</span></label>
+                    <input required name="nik" id="name" type="number" class="form-control" placeholder="">
+                </div>
+            </div>
+
+
+
             <div class="mb-3">
-                <label class="form-label">Jenis Kelamin</label>
-                <select name="gender" class="form-control">
+                <label class="form-label">Jenis Kelamin <span class="text-danger">*</span></label>
+                <select required name="gender" class="form-control">
                     <option value="male">Laki-Laki</option>
                     <option value="female">Perempuan</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Wilayah <span class="text-danger">*</span></label>
+                <select required name="wilayah" class="form-control">
+                    <option value="BADAS">Badas</option>
+                    <option value="BANYAKAN">Banyakan</option>
+                    <option value="GAMPENGREJO">Gampengrejo</option>
+                    <option value="GROGOL">Grogol</option>
+                    <option value="GURAH">Gurah</option>
+                    <option value="KANDANGAN">Kandangan</option>
+                    <option value="KANDAT">Kandat</option>
+                    <option value="KAYEN_KIDUL">Kayen Kidul</option>
+                    <option value="KEPUNG">Kepung</option>
+                    <option value="KRAS">Kras</option>
+                    <option value="KUNJANG">Kunjang</option>
+                    <option value="MOJO">Mojo</option>
+                    <option value="NGADILUWIH">Ngadiluwih</option>
+                    <option value="NGANCAR">Ngancar</option>
+                    <option value="NGASEM">Ngasem</option>
+                    <option value="PAGU">Pagu</option>
+                    <option value="PAPAR">Papar</option>
+                    <option value="PARE">Pare</option>
+                    <option value="PLEMAHAN">Plemahan</option>
+                    <option value="PLOSOKLATEN">Plosoklaten</option>
+                    <option value="PUNCU">Puncu</option>
+                    <option value="PURWOASRI">Purwoasri</option>
+                    <option value="RINGINREJO">Ringinrejo</option>
+                    <option value="SEMEN">Semen</option>
+                    <option value="TAROKAN">Tarokan</option>
+                    <option value="WATES">Wates</option>
                 </select>
             </div>
             <div class="col-12">
                 <div class="mb-3">
                     <label class="form-label">No TPS <span class="text-danger">*</span></label>
-                    <input name="no_tps" type="number" id="name" type="text" class="form-control"
-                        placeholder="Title :">
+                    <input required name="no_tps" type="number" id="name" type="text"
+                        class="form-control" placeholder="">
                 </div>
             </div>
             <div class="col-12">
                 <div class="mb-3">
                     <label class="form-label">Foto Pemilih <span class="text-danger">*</span></label>
-                    <input name="foto_self" hidden type="file" id="fileFotoOrang">
-                    <div>
+                    <input required name="foto_self" hidden type="file" id="fileFotoOrang">
+                    <div class="mb-1">
                         <button type="button" class="btn btn-primary" id="start-camera1">
                             Buka Kamera
                         </button>
                     </div>
-                    <video id="video1" width="320" height="240" autoplay></video>
-                    <div>
+                    <video id="video1" width="320" autoplay></video>
+                    <div class="my-1">
                         <button type="button" type="button" id="btnAmbilFotoOrang" class="btn btn-primary">Ambil
                             Foto</button>
                     </div>
-                    <canvas id="canvas1" width="320" height="240"></canvas>
+                    <canvas id="canvas1" width="320"></canvas>
                 </div>
             </div>
             <div class="col-12">
                 <div class="mb-3">
                     <label class="form-label">Foto Ktp <span class="text-danger">*</span></label>
-                    <input name="foto_ktp" hidden type="file" id="fileFotoKtp">
-                    <div>
+                    <input required name="foto_ktp" hidden type="file" id="fileFotoKtp">
+                    <div class="mb-1">
                         <button type="button" class="btn btn-primary" id="start-camera2">
                             Buka Kamera
                         </button>
                     </div>
-                    <video id="video2" width="320" height="240" autoplay></video>
-                    <div>
+                    <video id="video2" width="320" autoplay></video>
+                    <div class="mt-1 mb-1">
                         <button type="button" id="btnAmbilFotoKtp" class="btn btn-primary">Ambil Foto</button>
                     </div>
-                    <canvas id="canvas2" width="320" height="240"></canvas>
+                    <canvas id="canvas2" width="320"></canvas>
                 </div>
             </div>
 
-            <div class="d-flex justify-content-center mt-5">
-                <button class="btn btn-primary">Simpan</button>
+            <div class="d-flex justify-content-center mt-5 gap-3">
+                <a href="/koordinators" type="button" class="btn btn-primary w-100">Kembali</a>
+                <button type="submit" class="btn btn-primary w-100">Simpan</button>
             </div>
 
 

@@ -183,12 +183,12 @@
                 <!-- sidebar-menu  -->
             </div>
             <!-- Sidebar Footer -->
-            <ul class="sidebar-footer list-unstyled mb-0">
+            {{-- <ul class="sidebar-footer list-unstyled mb-0">
                 <li class="list-inline-item mb-0">
                     <a href="https://1.envato.market/4n73n" target="_blank" class="btn btn-icon btn-soft-light"><i
                             class="ti ti-shopping-cart"></i></a> <small class="text-muted ms-1">Buy Now</small>
                 </li>
-            </ul>
+            </ul> --}}
             <!-- Sidebar Footer -->
         </nav>
         <!-- sidebar-wrapper  -->
@@ -393,7 +393,8 @@
                         <div class="col-6 mt-4">
                             <div class="card">
                                 <div class="card-body">
-                                    <form method="POST" action="/admins/koordinators">
+                                    <form method="POST" action="/admins/koordinators" enctype="multipart/form-data">
+                                        @csrf
                                         <div class="row">
                                             <div class="col-12 mb-3">
                                                 <label class="form-label">Nama<span

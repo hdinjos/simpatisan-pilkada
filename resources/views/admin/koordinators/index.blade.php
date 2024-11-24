@@ -41,23 +41,45 @@
         </div> -->
     <!-- Loader -->
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Hapus Data</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Apakah Ingin Mengapus Data Ini?
+                </div>
+                <form method="POST" action="/admins/koordinators/delete" class="modal-footer">
+                    @csrf
+                    <input name="id" type="text" hidden id="inputDelete" />
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+                    <button type="submit" class="btn btn-primary">Ya</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <div class="page-wrapper landrick-theme toggled">
         <nav id="sidebar" class="sidebar-wrapper sidebar-dark">
             <div class="sidebar-content" data-simplebar style="height: calc(100% - 60px);">
-                <div class="sidebar-brand">
-                    <a href="index.html">
-                        <img src="{{ asset('images/logo-dark.png') }}" height="24" class="logo-light-mode"
+                <div class="sidebar-brand text-center">
+                    <a href="/admins/koordinators">
+                        <span>COBLOS APP</span>
+                        {{-- <img src="{{ asset('images/logo-dark.png') }}" height="24" class="logo-light-mode"
                             alt="">
                         <img src="{{ asset('images/logo-light.png') }}" height="24" class="logo-dark-mode"
                             alt="">
                         <span class="sidebar-colored">
                             <img src="{{ asset('images/logo-light.png') }}" height="24" alt="">
-                        </span>
+                        </span> --}}
                     </a>
                 </div>
 
                 <ul class="sidebar-menu">
-                    <li><a href="index.html"><i class="ti ti-home me-2"></i>Summary</a></li>
+                    {{-- <li><a href="index.html"><i class="ti ti-home me-2"></i>Summary</a></li> --}}
                     <li><a href="/admins/koordinators"><i class="ti ti-browser me-2"></i>Koordinator Partisipan</a></li>
                     {{-- <li class="sidebar-dropdown">
                         <a href="javascript:void(0)"><i class="ti ti-browser me-2"></i>Layouts</a>
@@ -208,152 +230,19 @@
                         <a id="close-sidebar" class="btn btn-icon btn-soft-light" href="javascript:void(0)">
                             <i class="ti ti-menu-2"></i>
                         </a>
-                        <div class="search-bar p-0 d-none d-md-block ms-2">
-                            <div id="search" class="menu-search mb-0">
-                                <form role="search" method="get" id="searchform" class="searchform">
-                                    <div>
-                                        <input type="text" class="form-control border rounded" name="s"
-                                            id="s" placeholder="Search Keywords...">
-                                        <input type="submit" id="searchsubmit" value="Search">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+
                     </div>
 
                     <ul class="list-unstyled mb-0">
-                        <li class="list-inline-item mb-0">
-                            <a href="javascript:void(0)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                                aria-controls="offcanvasRight">
-                                <div class="btn btn-icon btn-soft-light"><i class="ti ti-settings"></i></div>
-                            </a>
-                        </li>
-
-                        <li class="list-inline-item mb-0 ms-1">
-                            <div class="dropdown dropdown-primary">
-                                <button type="button" class="btn btn-icon btn-soft-light dropdown-toggle p-0"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
-                                        class="ti ti-bell"></i></button>
-                                <span
-                                    class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
-                                    <span class="visually-hidden">New alerts</span>
-                                </span>
-
-                                <div class="dropdown-menu dd-menu bg-white shadow rounded border-0 mt-3 p-0"
-                                    data-simplebar style="height: 320px; width: 290px;">
-                                    <div class="d-flex align-items-center justify-content-between p-3 border-bottom">
-                                        <h6 class="mb-0 text-dark">Notifications</h6>
-                                        <span class="badge bg-soft-danger rounded-pill">3</span>
-                                    </div>
-                                    <div class="p-3">
-                                        <a href="#!"
-                                            class="dropdown-item features feature-primary key-feature p-0">
-                                            <div class="d-flex align-items-center">
-                                                <div class="icon text-center rounded-circle me-2">
-                                                    <i class="ti ti-shopping-cart"></i>
-                                                </div>
-                                                <div class="flex-1">
-                                                    <h6 class="mb-0 text-dark title">Order Complete</h6>
-                                                    <small class="text-muted">15 min ago</small>
-                                                </div>
-                                            </div>
-                                        </a>
-
-                                        <a href="#!"
-                                            class="dropdown-item features feature-primary key-feature p-0 mt-3">
-                                            <div class="d-flex align-items-center">
-                                                <img src="assets/images/client/04.jpg"
-                                                    class="avatar avatar-md-sm rounded-circle border shadow me-2"
-                                                    alt="">
-                                                <div class="flex-1">
-                                                    <h6 class="mb-0 text-dark title"><span
-                                                            class="fw-bold">Message</span> from Luis</h6>
-                                                    <small class="text-muted">1 hour ago</small>
-                                                </div>
-                                            </div>
-                                        </a>
-
-                                        <a href="#!"
-                                            class="dropdown-item features feature-primary key-feature p-0 mt-3">
-                                            <div class="d-flex align-items-center">
-                                                <div class="icon text-center rounded-circle me-2">
-                                                    <i class="ti ti-currency-dollar"></i>
-                                                </div>
-                                                <div class="flex-1">
-                                                    <h6 class="mb-0 text-dark title"><span class="fw-bold">One Refund
-                                                            Request</span></h6>
-                                                    <small class="text-muted">2 hour ago</small>
-                                                </div>
-                                            </div>
-                                        </a>
-
-                                        <a href="#!"
-                                            class="dropdown-item features feature-primary key-feature p-0 mt-3">
-                                            <div class="d-flex align-items-center">
-                                                <div class="icon text-center rounded-circle me-2">
-                                                    <i class="ti ti-truck-delivery"></i>
-                                                </div>
-                                                <div class="flex-1">
-                                                    <h6 class="mb-0 text-dark title">Deliverd your Order</h6>
-                                                    <small class="text-muted">Yesterday</small>
-                                                </div>
-                                            </div>
-                                        </a>
-
-                                        <a href="#!"
-                                            class="dropdown-item features feature-primary key-feature p-0 mt-3">
-                                            <div class="d-flex align-items-center">
-                                                <img src="assets/images/client/15.jpg"
-                                                    class="avatar avatar-md-sm rounded-circle border shadow me-2"
-                                                    alt="">
-                                                <div class="flex-1">
-                                                    <h6 class="mb-0 text-dark title"><span
-                                                            class="fw-bold">Cally</span> started following you</h6>
-                                                    <small class="text-muted">2 days ago</small>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="list-inline-item mb-0 ms-1">
-                            <div class="dropdown dropdown-primary">
-                                <button type="button" class="btn btn-soft-light dropdown-toggle p-0"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
-                                        src="assets/images/client/05.jpg" class="avatar avatar-ex-small rounded"
-                                        alt=""></button>
-                                <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow border-0 mt-3 py-3"
-                                    style="min-width: 200px;">
-                                    <a class="dropdown-item d-flex align-items-center text-dark pb-3"
-                                        href="profile.html">
-                                        <img src="assets/images/client/05.jpg"
-                                            class="avatar avatar-md-sm rounded-circle border shadow" alt="">
-                                        <div class="flex-1 ms-2">
-                                            <span class="d-block">Cristina Julia</span>
-                                            <small class="text-muted">UI / UX Designer</small>
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item text-dark" href="index.html"><span
-                                            class="mb-0 d-inline-block me-1"><i class="ti ti-home"></i></span>
-                                        Dashboard</a>
-                                    <a class="dropdown-item text-dark" href="profile.html"><span
-                                            class="mb-0 d-inline-block me-1"><i class="ti ti-settings"></i></span>
-                                        Profile</a>
-                                    <a class="dropdown-item text-dark" href="email.html"><span
-                                            class="mb-0 d-inline-block me-1"><i class="ti ti-mail"></i></span>
-                                        Email</a>
-                                    <div class="dropdown-divider border-top"></div>
-                                    <a class="dropdown-item text-dark" href="lock-screen.html"><span
-                                            class="mb-0 d-inline-block me-1"><i class="ti ti-lock"></i></span>
-                                        Lockscreen</a>
-                                    <a class="dropdown-item text-dark" href="login.html"><span
-                                            class="mb-0 d-inline-block me-1"><i class="ti ti-logout"></i></span>
-                                        Logout</a>
-                                </div>
-                            </div>
-                        </li>
+                        <div class="d-flex align-items-center">
+                            <span>{{ Auth::user()->name }},</span>
+                            <form method="POST" action="/auth/admins/logout" class="p-3 text-center">
+                                @csrf
+                                <button type="submit" class="dropdown-item text-dark"><span
+                                        class="mb-0 d-inline-block me-1"><i class="ti ti-logout"></i></span>
+                                    Logout</button>
+                            </form>
+                        </div>
                     </ul>
                 </div>
             </div>
@@ -395,304 +284,46 @@
                                 <table class="table table-center bg-white mb-0">
                                     <thead>
                                         <tr>
-                                            <th class="border-bottom p-3">Invoice No.</th>
-                                            <th class="border-bottom p-3" style="min-width: 220px;">Client Name</th>
-                                            <th class="text-center border-bottom p-3" style="min-width: 200px;">Phone
+                                            <th class="border-bottom p-3">Nama</th>
+                                            <th class="border-bottom p-3" style="min-width: 220px;">Username</th>
+                                            <th class="border-bottom p-3" style="min-width: 200px;">Foto
                                             </th>
-                                            <th class="text-center border-bottom p-3">Amount</th>
-                                            <th class="text-center border-bottom p-3" style="min-width: 150px;">
-                                                Generate(Dt.)</th>
-                                            <th class="text-center border-bottom p-3">Status</th>
-                                            <th class="text-end border-bottom p-3" style="min-width: 200px;"></th>
+
+                                            <th class="border-bottom p-3" style="min-width: 200px;">Aksi
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <!-- Start -->
-                                        <tr>
-                                            <th class="p-3">#d01</th>
-                                            <td class="p-3">
-                                                <a href="#" class="text-primary">
-                                                    <div class="d-flex align-items-center">
-                                                        <img src="assets/images/client/01.jpg"
-                                                            class="avatar avatar-ex-small rounded-circle shadow"
-                                                            alt="">
-                                                        <span class="ms-2">Howard Tanner</span>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                            <td class="text-center p-3">(+12)85-4521-7568</td>
-                                            <td class="text-center p-3">$253</td>
-                                            <td class="text-center p-3">23th Sept 2021</td>
-                                            <td class="text-center p-3">
-                                                <div class="badge bg-soft-danger rounded px-3 py-1">
-                                                    Unpaid
-                                                </div>
-                                            </td>
-                                            <td class="text-end p-3">
-                                                <a href="invoice.html" class="btn btn-sm btn-primary">Preview</a>
-                                                <a href="#" class="btn btn-sm btn-soft-primary ms-2">Print</a>
-                                            </td>
-                                        </tr>
-                                        <!-- End -->
 
-                                        <!-- Start -->
-                                        <tr>
-                                            <th class="p-3">#d02</th>
-                                            <td class="p-3">
-                                                <a href="#" class="text-primary">
-                                                    <div class="d-flex align-items-center">
-                                                        <img src="assets/images/client/02.jpg"
-                                                            class="avatar avatar-ex-small rounded-circle shadow"
-                                                            alt="">
-                                                        <span class="ms-2">Wendy Filson</span>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                            <td class="text-center p-3">(+12)85-4521-7568</td>
-                                            <td class="text-center p-3">$482</td>
-                                            <td class="text-center p-3">11th Sept 2021</td>
-                                            <td class="text-center p-3">
-                                                <div class="badge bg-soft-success rounded px-3 py-1">
-                                                    Paid
-                                                </div>
-                                            </td>
-                                            <td class="text-end p-3">
-                                                <a href="invoice.html" class="btn btn-sm btn-primary">Preview</a>
-                                                <a href="#" class="btn btn-sm btn-soft-primary ms-2">Print</a>
-                                            </td>
-                                        </tr>
-                                        <!-- End -->
+                                        @foreach ($users as $u)
+                                            <tr>
+                                                <th class="p-3">{{ $u->name }}</th>
+                                                <td class="p-3">{{ $u->username }}</td>
+                                                <td class="p-3">
+                                                    <img width="50px" height="50px"
+                                                        src="{{ asset('storage/foto/' . $u->image) }}" />
+                                                </td>
+                                                <td class="p-3">
+                                                    {{-- <a href="invoice.html" class="btn btn-sm btn-primary">Lihat</a> --}}
+                                                    <button onclick="deleteData({{ $u->id }})"
+                                                        data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                                        id="btnDelete{{ $u->id }}" data="{{ $u->id }}"
+                                                        class="btn btn-sm btn-soft-danger ms-2">Hapus</button>
+                                                </td>
+                                            </tr>
+                                            <!-- End -->
+                                        @endforeach
 
-                                        <!-- Start -->
-                                        <tr>
-                                            <th class="p-3">#d03</th>
-                                            <td class="p-3">
-                                                <a href="#" class="text-primary">
-                                                    <div class="d-flex align-items-center">
-                                                        <img src="assets/images/client/03.jpg"
-                                                            class="avatar avatar-ex-small rounded-circle shadow"
-                                                            alt="">
-                                                        <span class="ms-2">Faye Bridger</span>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                            <td class="text-center p-3">(+12)85-4521-7568</td>
-                                            <td class="text-center p-3">$546</td>
-                                            <td class="text-center p-3">2nd Sept 2021</td>
-                                            <td class="text-center p-3">
-                                                <div class="badge bg-soft-danger rounded px-3 py-1">
-                                                    Unpaid
-                                                </div>
-                                            </td>
-                                            <td class="text-end p-3">
-                                                <a href="invoice.html" class="btn btn-sm btn-primary">Preview</a>
-                                                <a href="#" class="btn btn-sm btn-soft-primary ms-2">Print</a>
-                                            </td>
-                                        </tr>
-                                        <!-- End -->
 
-                                        <!-- Start -->
-                                        <tr>
-                                            <th class="p-3">#d04</th>
-                                            <td class="p-3">
-                                                <a href="#" class="text-primary">
-                                                    <div class="d-flex align-items-center">
-                                                        <img src="assets/images/client/04.jpg"
-                                                            class="avatar avatar-ex-small rounded-circle shadow"
-                                                            alt="">
-                                                        <span class="ms-2">Ronald Curtis</span>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                            <td class="text-center p-3">(+12)85-4521-7568</td>
-                                            <td class="text-center p-3">$154</td>
-                                            <td class="text-center p-3">1st Sept 2021</td>
-                                            <td class="text-center p-3">
-                                                <div class="badge bg-soft-danger rounded px-3 py-1">
-                                                    Unpaid
-                                                </div>
-                                            </td>
-                                            <td class="text-end p-3">
-                                                <a href="invoice.html" class="btn btn-sm btn-primary">Preview</a>
-                                                <a href="#" class="btn btn-sm btn-soft-primary ms-2">Print</a>
-                                            </td>
-                                        </tr>
-                                        <!-- End -->
 
-                                        <!-- Start -->
-                                        <tr>
-                                            <th class="p-3">#d05</th>
-                                            <td class="p-3">
-                                                <a href="#" class="text-primary">
-                                                    <div class="d-flex align-items-center">
-                                                        <img src="assets/images/client/05.jpg"
-                                                            class="avatar avatar-ex-small rounded-circle shadow"
-                                                            alt="">
-                                                        <span class="ms-2">Melissa Hibner</span>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                            <td class="text-center p-3">(+12)85-4521-7568</td>
-                                            <td class="text-center p-3">$458</td>
-                                            <td class="text-center p-3">1st Sept 2021</td>
-                                            <td class="text-center p-3">
-                                                <div class="badge bg-soft-success rounded px-3 py-1">
-                                                    Paid
-                                                </div>
-                                            </td>
-                                            <td class="text-end p-3">
-                                                <a href="invoice.html" class="btn btn-sm btn-primary">Preview</a>
-                                                <a href="#" class="btn btn-sm btn-soft-primary ms-2">Print</a>
-                                            </td>
-                                        </tr>
-                                        <!-- End -->
 
-                                        <!-- Start -->
-                                        <tr>
-                                            <th class="p-3">#d06</th>
-                                            <td class="p-3">
-                                                <a href="#" class="text-primary">
-                                                    <div class="d-flex align-items-center">
-                                                        <img src="assets/images/client/06.jpg"
-                                                            class="avatar avatar-ex-small rounded-circle shadow"
-                                                            alt="">
-                                                        <span class="ms-2">Randall Case</span>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                            <td class="text-center p-3">(+12)85-4521-7568</td>
-                                            <td class="text-center p-3">$548</td>
-                                            <td class="text-center p-3">28th Aug 2021</td>
-                                            <td class="text-center p-3">
-                                                <div class="badge bg-soft-success rounded px-3 py-1">
-                                                    Paid
-                                                </div>
-                                            </td>
-                                            <td class="text-end p-3">
-                                                <a href="invoice.html" class="btn btn-sm btn-primary">Preview</a>
-                                                <a href="#" class="btn btn-sm btn-soft-primary ms-2">Print</a>
-                                            </td>
-                                        </tr>
-                                        <!-- End -->
-
-                                        <!-- Start -->
-                                        <tr>
-                                            <th class="p-3">#d07</th>
-                                            <td class="p-3">
-                                                <a href="#" class="text-primary">
-                                                    <div class="d-flex align-items-center">
-                                                        <img src="assets/images/client/07.jpg"
-                                                            class="avatar avatar-ex-small rounded-circle shadow"
-                                                            alt="">
-                                                        <span class="ms-2">Jerry Morena</span>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                            <td class="text-center p-3">(+12)85-4521-7568</td>
-                                            <td class="text-center p-3">$658</td>
-                                            <td class="text-center p-3">25th Aug 2021</td>
-                                            <td class="text-center p-3">
-                                                <div class="badge bg-soft-danger rounded px-3 py-1">
-                                                    Unpaid
-                                                </div>
-                                            </td>
-                                            <td class="text-end p-3">
-                                                <a href="invoice.html" class="btn btn-sm btn-primary">Preview</a>
-                                                <a href="#" class="btn btn-sm btn-soft-primary ms-2">Print</a>
-                                            </td>
-                                        </tr>
-                                        <!-- End -->
-
-                                        <!-- Start -->
-                                        <tr>
-                                            <th class="p-3">#d08</th>
-                                            <td class="p-3">
-                                                <a href="#" class="text-primary">
-                                                    <div class="d-flex align-items-center">
-                                                        <img src="assets/images/client/08.jpg"
-                                                            class="avatar avatar-ex-small rounded-circle shadow"
-                                                            alt="">
-                                                        <span class="ms-2">Lester McNally</span>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                            <td class="text-center p-3">(+12)85-4521-7568</td>
-                                            <td class="text-center p-3">$457</td>
-                                            <td class="text-center p-3">20th Aug 2021</td>
-                                            <td class="text-center p-3">
-                                                <div class="badge bg-soft-danger rounded px-3 py-1">
-                                                    Unpaid
-                                                </div>
-                                            </td>
-                                            <td class="text-end p-3">
-                                                <a href="invoice.html" class="btn btn-sm btn-primary">Preview</a>
-                                                <a href="#" class="btn btn-sm btn-soft-primary ms-2">Print</a>
-                                            </td>
-                                        </tr>
-                                        <!-- End -->
-
-                                        <!-- Start -->
-                                        <tr>
-                                            <th class="p-3">#d09</th>
-                                            <td class="p-3">
-                                                <a href="#" class="text-primary">
-                                                    <div class="d-flex align-items-center">
-                                                        <img src="assets/images/client/09.jpg"
-                                                            class="avatar avatar-ex-small rounded-circle shadow"
-                                                            alt="">
-                                                        <span class="ms-2">Christopher Burrell</span>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                            <td class="text-center p-3">(+12)85-4521-7568</td>
-                                            <td class="text-center p-3">$586</td>
-                                            <td class="text-center p-3">15th Aug 2021</td>
-                                            <td class="text-center p-3">
-                                                <div class="badge bg-soft-success rounded px-3 py-1">
-                                                    Paid
-                                                </div>
-                                            </td>
-                                            <td class="text-end p-3">
-                                                <a href="invoice.html" class="btn btn-sm btn-primary">Preview</a>
-                                                <a href="#" class="btn btn-sm btn-soft-primary ms-2">Print</a>
-                                            </td>
-                                        </tr>
-                                        <!-- End -->
-
-                                        <!-- Start -->
-                                        <tr>
-                                            <th class="p-3">#d10</th>
-                                            <td class="p-3">
-                                                <a href="#" class="text-primary">
-                                                    <div class="d-flex align-items-center">
-                                                        <img src="assets/images/client/10.jpg"
-                                                            class="avatar avatar-ex-small rounded-circle shadow"
-                                                            alt="">
-                                                        <span class="ms-2">Mary Skeens</span>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                            <td class="text-center p-3">(+12)85-4521-7568</td>
-                                            <td class="text-center p-3">$325</td>
-                                            <td class="text-center p-3">10th Aug 2021</td>
-                                            <td class="text-center p-3">
-                                                <div class="badge bg-soft-danger rounded px-3 py-1">
-                                                    Unpaid
-                                                </div>
-                                            </td>
-                                            <td class="text-end p-3">
-                                                <a href="invoice.html" class="btn btn-sm btn-primary">Preview</a>
-                                                <a href="#" class="btn btn-sm btn-soft-primary ms-2">Print</a>
-                                            </td>
-                                        </tr>
-                                        <!-- End -->
                                     </tbody>
                                 </table>
                             </div>
                         </div><!--end col-->
                     </div><!--end row-->
 
-                    <div class="row text-center">
+                    {{-- <div class="row text-center">
                         <!-- PAGINATION START -->
                         <div class="col-12 mt-4">
                             <div class="d-md-flex align-items-center text-center justify-content-between">
@@ -709,7 +340,7 @@
                             </div>
                         </div><!--end col-->
                         <!-- PAGINATION END -->
-                    </div><!--end row-->
+                    </div><!--end row--> --}}
                 </div>
             </div><!--end container-->
 
@@ -822,6 +453,14 @@
     <!-- Main Js -->
     <script src="{{ asset('js/plugins.init.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
+
+    <script>
+        function deleteData(id) {
+            const inputDelete = document.querySelector("#inputDelete");
+            inputDelete.value = id;
+
+        }
+    </script>
 
 </body>
 

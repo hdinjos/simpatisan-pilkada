@@ -55,13 +55,15 @@ class KoordinatorController extends Controller
             $imageKtp = $request->file('foto_ktp');
             $imageselfHasname = $imageSelf->hashName();
             $imageKtpHasname = $imageKtp->hashName();
-            $imageSelf->storeAs('/image_self', $imageselfHasname);
-            $imageKtp->storeAs('/image_ktp', $imageKtpHasname);
+            $imageSelf->storeAs('image_self', $imageselfHasname, 'public');
+            $imageKtp->storeAs('image_ktp', $imageKtpHasname, 'public');
 
             Simpatisan::create([
                 'name'      => $request->name,
+                'nik'    => $request->nik,
                 'gender'    => $request->gender,
                 'no_tps'    => $request->no_tps,
+                'wilayah'    => $request->wilayah,
                 'foto_self' => $imageselfHasname,
                 'foto_ktp'  => $imageKtpHasname,
                 'user_id'   => Auth::user()->id,

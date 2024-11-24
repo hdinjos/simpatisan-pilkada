@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Landrick - Invoice List</title>
+    <title>Coblos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Premium Bootstrap 5 Admin Dashboard Template" />
     <meta name="keywords" content="Saas, CRM, Admin, Dashboard, Modern, Classic" />
@@ -25,21 +25,49 @@
     <link href="{{ asset('css/tabler-icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="https://unicons.iconscout.com/release/v3.0.6/css/line.css" rel="stylesheet">
     <!-- Css -->
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" id="theme-opt" />
+    <link href="{{ asset('css/style2.css') }}" rel="stylesheet" type="text/css" id="theme-opt" />
     <style>
-        @media (min-width: 500px) {
-            .my-custom-container {
-                width: 500px;
-                border: 1px solid black;
-                height: 100vh;
-                position: relative;
-            }
+        .my-custom-container {
+            width: 500px;
+            border: 1px solid black;
+            height: 100vh;
+            width: 500px;
+            min-height: 100vh;
+            /* display: flex; */
+            /* align-items: center; */
+            /* justify-content: center; */
+            flex-direction: column;
+            background-color: black;
+            color: white;
+            overflow-y: auto;
+            position: relative;
         }
 
         .btn-tambah {
             position: absolute;
             bottom: 30px;
             right: 30px;
+        }
+
+        .border-wrap {
+            border-radius: 10px;
+            border: 1px solid #FEDE58;
+        }
+
+        .border-pribadi {
+            border-radius: 30px;
+            border: 1px solid #FEDE58;
+        }
+
+        .total-top {
+            color: #FEDE58;
+            font-size: 45px;
+        }
+
+        .border-data {
+
+            border-bottom: 1px solid #FEDE58;
+            border-top: 1px solid #FEDE58;
         }
     </style>
 
@@ -50,9 +78,10 @@
     <div class="container my-custom-container">
         <div class="row mb-3">
             <div class="col-12 text-center">
-                <form method="POST" action="/auth/koordinators/logout" class="p-3 text-center">Selemat Datang
-                    {{ Auth::user()->name }}
+                <form method="POST" action="/auth/koordinators/logout" class="p-3 text-center">Selamat Datang
+
                     @csrf
+                    <h4>{{ Auth::user()->name }}</h4>
                     <button class="btn btn-primary">Logout</button>
                 </form>
             </div>
@@ -61,11 +90,16 @@
         <div class="row mb-3">
             <div class="col-12 px-4">
                 <div class="">Total Input Simpatisan</div>
-                <div class="p-4" style="border:1px solid blue;">
-                    <div class="text-center">{{ $totalSimpatisan }}<span>Orang</div>
+                <div class="p-4 border-wrap">
+                    <div class="d-flex justify-content-center align-items-center gap-2">
+                        <div class="total-top text-primary">
+                            {{ $totalSimpatisan }}
+                        </div>
+                        <div>Orang</div>
+                    </div>
                     <div class="d-flex justify-content-between">
-                        <div><span>Laki-laki</span> {{ $totalSimpatisanMale }}</div>
-                        <div><span>Perempuan</span> {{ $totalSimpatisanFemale }}</div>
+                        <div><span class="text-primary">Laki-laki</span> {{ $totalSimpatisanMale }}</div>
+                        <div><span class="text-primary">Perempuan</span> {{ $totalSimpatisanFemale }}</div>
                     </div>
                 </div>
             </div>
@@ -73,13 +107,21 @@
         <div class="row mb-3">
             <div class="col-12 px-4">
                 <div class="">Total Input Pribadi</div>
-                <div class="p-4" style="border:1px solid blue;">
+                <div class="p-4 border-pribadi">
                     <div class="row">
-
-                        <div class="col-6">{{ $totalSimpatisan }}<span>Orang</div>
                         <div class="col-6">
-                            <div><span>Laki-laki</span> {{ $totalSimpatisanMale }}</div>
-                            <div><span>Perempuan</span> {{ $totalSimpatisanFemale }}</div>
+                            <div class="d-flex align-items-center gap-2">
+                                <div class="total-top text-primary">
+                                    {{ $simpatisanByMe }}
+                                </div>
+                                <div class="">Orang</div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex flex-column justify-content-center align-items-center h-100">
+                                <div><span class="text-primary">Laki-laki</span> {{ $simpatisanByMeMale }}</div>
+                                <div><span class="text-primary">Perempuan</span> {{ $simpatisanByMeFeMale }}</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -90,13 +132,14 @@
                 <div class="col-12 px-4">Pengambilan Data</div>
             </div>
             @forelse ($simpatisans as $s)
-                <div class="row border-top py-4">
+                <div class="row border-data py-4">
                     <div class="col-6 px-4">
                         <div class="text">{{ $s->name }}</div>
-                        <div class="text">40939433094343939</div>
+                        <div class="text">{{ $s->nik }}</div>
                     </div>
                     <div class="col-6 px-4">
-                        <div class="d-flex justify-content-end">{{ $s->created_at }}</div>
+                        <div class="d-flex justify-content-end">{{ date('d-m-Y h:i', strtotime($s->created_at)) }}
+                        </div>
                     </div>
                 </div>
             @empty
@@ -105,7 +148,7 @@
 
         </div>
 
-        <a href="/koordinators/create" class="btn btn-icon btn-pills btn-success mt-2 btn-tambah">
+        <a href="/koordinators/create" class="p-4 btn btn-icon btn-pills btn-primary mt-2 btn-tambah">
             <i class="uil uil-0-plus"></i>
             {{-- <svg
                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
