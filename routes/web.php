@@ -8,9 +8,15 @@ use App\Http\Controllers\AuthController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('auth/admins/login', [AuthController::class, 'formLoginAdmin']);
+Route::post('auth/admins/login', [AuthController::class, 'loginAdmin']);
 
 Route::resource('admins/koordinators', AdminController::class);
 Route::resource('koordinators', KoordinatorController::class);
+
 Route::get('auth/koordinators/login', [AuthController::class, 'formLoginKoordinator']);
 Route::post('auth/koordinators/login', [AuthController::class, 'loginKoordinator']);
 Route::post('auth/koordinators/logout', [AuthController::class, 'koordinatorLogout']);
+
+
+// Route::post('auth/koordinators/logout', [AuthController::class, 'koordinatorLogout']);

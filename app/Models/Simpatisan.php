@@ -19,8 +19,10 @@ class Simpatisan extends Model
      */
     protected $fillable = [
         'name',
+        'nik',
         'gender',
         'no_tps',
+        'wilayah',
         'foto_self',
         'foto_ktp',
         'user_id'

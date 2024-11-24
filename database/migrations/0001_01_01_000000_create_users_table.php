@@ -18,6 +18,7 @@ return new class extends Migration
             $table->timestamp('username_verified_at')->nullable();
             $table->string('password');
             $table->string('role');
+            $table->string('image');
             $table->rememberToken();
             $table->timestamps();
         });

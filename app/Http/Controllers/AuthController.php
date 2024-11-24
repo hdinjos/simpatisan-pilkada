@@ -40,4 +40,30 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
         return redirect('/auth/koordinators/login');;
     }
+
+    public function formLoginAdmin()
+    {
+        //
+        return view('admin/auth/login-form');
+    }
+
+    //
+    public function loginAdmin(Request $request)
+    {
+        //
+        $credentials = $request->validate([
+            'username' => ['required'],
+            'password' => ['required'],
+        ]);
+        // dd($credentials);
+
+        if (Auth::attemptWhen($credentials, function ($user) {
+            // dd($user);
+            return $user->role == "ADMIN";
+        })) {
+            return redirect('/admins/koordinators');
+        } else {
+            return redirect('/auth/admins/login');
+        }
+    }
 }

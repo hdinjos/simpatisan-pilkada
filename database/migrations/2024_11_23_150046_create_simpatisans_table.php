@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('simpatisans', function (Blueprint $table) {
             $table->increments('id', true);
             $table->string('name');
+            $table->string('nik');
+            $table->string('wilayah');
             $table->string('gender');
             $table->string('no_tps');
             $table->string('foto_self');
@@ -28,7 +30,7 @@ return new class extends Migration
         // });
     }
 
-    
+
 
     /**
      * Reverse the migrations.

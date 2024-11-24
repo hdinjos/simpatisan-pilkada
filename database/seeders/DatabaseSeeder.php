@@ -27,10 +27,11 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         DB::table('users')->insert([
-            'name' => "Koorinator 1",
-            'username' => 'koordinator+1',
-            'password' => Hash::make('123456'),
-            'role' => 'KOOR',   
+            'name' => "Admin",
+            'username' => 'admin',
+            'password' => Hash::make('Qwerty123admin'),
+            'image' => '',
+            'role' => 'ADMIN',
         ]);
     }
 }

@@ -385,8 +385,7 @@
                         </div>
 
                         <div class="mt-4 mt-sm-0">
-                            <a href="#" class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#add-product">Tambah</a>
+                            <a href="/admins/koordinators/create" class="btn btn-primary">Tambah</a>
                         </div>
                     </div>
 

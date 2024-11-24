@@ -40,88 +40,7 @@
             </div>
         </div> -->
     <!-- Loader -->
-    {{-- Modal Created --}}
-    <div class="modal fade show" id="add-product" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true"
-        role="dialog" style="display: block;">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header border-bottom p-3">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Shop Product</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
 
-                <div class="modal-body p-3 pt-4">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="d-grid me-md-4">
-                                <p class="text-muted">Upload your shop image here, Please click "Upload Image" Button.
-                                </p>
-                                <div
-                                    class="preview-box d-block justify-content-center rounded shadow overflow-hidden bg-light p-1">
-                                </div>
-                                <input type="file" id="input-file" name="input-file" accept="image/*"
-                                    onchange="{handleChange()}" hidden="">
-                                <label class="btn-upload btn btn-primary mt-4" for="input-file">Upload Image</label>
-                            </div>
-                        </div><!--end col-->
-
-                        <div class="col-md-6 mt-4 mt-sm-0">
-                            <form>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="mb-3">
-                                            <label class="form-label">Shop Title <span
-                                                    class="text-danger">*</span></label>
-                                            <input name="name" id="name" type="text" class="form-control"
-                                                placeholder="Title :">
-                                        </div>
-                                    </div><!--end col-->
-
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label class="form-label"> Price: </label>
-                                            <div class="input-group mb-3">
-                                                <span class="input-group-text border bg-transparent"
-                                                    id="basic-addon1">$</span>
-                                                <input type="number" min="0" class="form-control"
-                                                    placeholder="Price" aria-label="Price"
-                                                    aria-describedby="basic-addon1">
-                                            </div>
-                                        </div>
-                                    </div><!--end col-->
-
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label class="form-label">Label:</label>
-                                            <select class="form-control">
-                                                <option value="FE">Featured</option>
-                                                <option value="NE">New</option>
-                                                <option value="PO">Popular</option>
-                                                <option value="RE">Recent</option>
-                                                <option value="FR">Free</option>
-                                            </select>
-                                        </div>
-                                    </div><!--end col-->
-
-                                    <div class="col-md-12">
-                                        <div class="mb-3">
-                                            <label class="form-label"> Rating : </label>
-                                            <input name="time" type="text" class="form-control" id="time"
-                                                value="0">
-                                        </div>
-                                    </div><!--end col-->
-
-                                    <div class="col-lg-12 text-end">
-                                        <button type="submit" class="btn btn-primary">Add Product</button>
-                                    </div><!--end col-->
-                                </div>
-                            </form>
-                        </div><!--end col-->
-                    </div><!--end row-->
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="page-wrapper landrick-theme toggled">
         <nav id="sidebar" class="sidebar-wrapper sidebar-dark">
@@ -457,7 +376,7 @@
 
                     <div class="d-md-flex justify-content-between">
                         <div>
-                            <h5 class="mb-0">Koordinator Partisipan</h5>
+                            <h5 class="mb-0">Tambah Koordinator Partisipan</h5>
 
                             {{-- <nav aria-label="breadcrumb" class="d-inline-block mt-1">
                                 <ul class="breadcrumb breadcrumb-muted bg-transparent rounded mb-0 p-0">
@@ -467,333 +386,53 @@
                             </nav> --}}
                         </div>
 
-                        <div class="mt-4 mt-sm-0">
-                            <a href="#" class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#add-product">Tambah</a>
-                        </div>
+
                     </div>
 
                     <div class="row">
-                        <div class="col-12 mt-4">
-                            <div class="table-responsive shadow rounded">
-                                <table class="table table-center bg-white mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th class="border-bottom p-3">Invoice No.</th>
-                                            <th class="border-bottom p-3" style="min-width: 220px;">Client Name</th>
-                                            <th class="text-center border-bottom p-3" style="min-width: 200px;">Phone
-                                            </th>
-                                            <th class="text-center border-bottom p-3">Amount</th>
-                                            <th class="text-center border-bottom p-3" style="min-width: 150px;">
-                                                Generate(Dt.)</th>
-                                            <th class="text-center border-bottom p-3">Status</th>
-                                            <th class="text-end border-bottom p-3" style="min-width: 200px;"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <!-- Start -->
-                                        <tr>
-                                            <th class="p-3">#d01</th>
-                                            <td class="p-3">
-                                                <a href="#" class="text-primary">
-                                                    <div class="d-flex align-items-center">
-                                                        <img src="assets/images/client/01.jpg"
-                                                            class="avatar avatar-ex-small rounded-circle shadow"
-                                                            alt="">
-                                                        <span class="ms-2">Howard Tanner</span>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                            <td class="text-center p-3">(+12)85-4521-7568</td>
-                                            <td class="text-center p-3">$253</td>
-                                            <td class="text-center p-3">23th Sept 2021</td>
-                                            <td class="text-center p-3">
-                                                <div class="badge bg-soft-danger rounded px-3 py-1">
-                                                    Unpaid
-                                                </div>
-                                            </td>
-                                            <td class="text-end p-3">
-                                                <a href="invoice.html" class="btn btn-sm btn-primary">Preview</a>
-                                                <a href="#" class="btn btn-sm btn-soft-primary ms-2">Print</a>
-                                            </td>
-                                        </tr>
-                                        <!-- End -->
+                        <div class="col-6 mt-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <form method="POST" action="/admins/koordinators">
+                                        <div class="row">
+                                            <div class="col-12 mb-3">
+                                                <label class="form-label">Nama<span
+                                                        class="text-danger">*</span></label>
+                                                <input name="name" id="name" type="text" required
+                                                    class="form-control" placeholder="Nama">
+                                            </div>
+                                            <div class="col-12 mb-3">
+                                                <label class="form-label">Username<span
+                                                        class="text-danger">*</span></label>
+                                                <input name="username" id="name" type="text" required
+                                                    class="form-control" placeholder="Username">
+                                            </div>
+                                            <div class="col-12 mb-3">
+                                                <label class="form-label">Password<span
+                                                        class="text-danger">*</span></label>
+                                                <input name="password" id="name" type="text" required
+                                                    class="form-control" placeholder="Password">
+                                            </div>
+                                            <div class="col-12 mb-3">
+                                                <label class="form-label">Foto<span
+                                                        class="text-danger">*</span></label>
+                                                <input name="image" id="name" type="file" required
+                                                    class="form-control" placeholder="Foto">
+                                            </div>
+                                            <div class="col-12 mb-3">
+                                                <button class="btn btn-primary">Simpan</button>
+                                            </div>
 
-                                        <!-- Start -->
-                                        <tr>
-                                            <th class="p-3">#d02</th>
-                                            <td class="p-3">
-                                                <a href="#" class="text-primary">
-                                                    <div class="d-flex align-items-center">
-                                                        <img src="assets/images/client/02.jpg"
-                                                            class="avatar avatar-ex-small rounded-circle shadow"
-                                                            alt="">
-                                                        <span class="ms-2">Wendy Filson</span>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                            <td class="text-center p-3">(+12)85-4521-7568</td>
-                                            <td class="text-center p-3">$482</td>
-                                            <td class="text-center p-3">11th Sept 2021</td>
-                                            <td class="text-center p-3">
-                                                <div class="badge bg-soft-success rounded px-3 py-1">
-                                                    Paid
-                                                </div>
-                                            </td>
-                                            <td class="text-end p-3">
-                                                <a href="invoice.html" class="btn btn-sm btn-primary">Preview</a>
-                                                <a href="#" class="btn btn-sm btn-soft-primary ms-2">Print</a>
-                                            </td>
-                                        </tr>
-                                        <!-- End -->
 
-                                        <!-- Start -->
-                                        <tr>
-                                            <th class="p-3">#d03</th>
-                                            <td class="p-3">
-                                                <a href="#" class="text-primary">
-                                                    <div class="d-flex align-items-center">
-                                                        <img src="assets/images/client/03.jpg"
-                                                            class="avatar avatar-ex-small rounded-circle shadow"
-                                                            alt="">
-                                                        <span class="ms-2">Faye Bridger</span>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                            <td class="text-center p-3">(+12)85-4521-7568</td>
-                                            <td class="text-center p-3">$546</td>
-                                            <td class="text-center p-3">2nd Sept 2021</td>
-                                            <td class="text-center p-3">
-                                                <div class="badge bg-soft-danger rounded px-3 py-1">
-                                                    Unpaid
-                                                </div>
-                                            </td>
-                                            <td class="text-end p-3">
-                                                <a href="invoice.html" class="btn btn-sm btn-primary">Preview</a>
-                                                <a href="#" class="btn btn-sm btn-soft-primary ms-2">Print</a>
-                                            </td>
-                                        </tr>
-                                        <!-- End -->
+                                        </div>
 
-                                        <!-- Start -->
-                                        <tr>
-                                            <th class="p-3">#d04</th>
-                                            <td class="p-3">
-                                                <a href="#" class="text-primary">
-                                                    <div class="d-flex align-items-center">
-                                                        <img src="assets/images/client/04.jpg"
-                                                            class="avatar avatar-ex-small rounded-circle shadow"
-                                                            alt="">
-                                                        <span class="ms-2">Ronald Curtis</span>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                            <td class="text-center p-3">(+12)85-4521-7568</td>
-                                            <td class="text-center p-3">$154</td>
-                                            <td class="text-center p-3">1st Sept 2021</td>
-                                            <td class="text-center p-3">
-                                                <div class="badge bg-soft-danger rounded px-3 py-1">
-                                                    Unpaid
-                                                </div>
-                                            </td>
-                                            <td class="text-end p-3">
-                                                <a href="invoice.html" class="btn btn-sm btn-primary">Preview</a>
-                                                <a href="#" class="btn btn-sm btn-soft-primary ms-2">Print</a>
-                                            </td>
-                                        </tr>
-                                        <!-- End -->
-
-                                        <!-- Start -->
-                                        <tr>
-                                            <th class="p-3">#d05</th>
-                                            <td class="p-3">
-                                                <a href="#" class="text-primary">
-                                                    <div class="d-flex align-items-center">
-                                                        <img src="assets/images/client/05.jpg"
-                                                            class="avatar avatar-ex-small rounded-circle shadow"
-                                                            alt="">
-                                                        <span class="ms-2">Melissa Hibner</span>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                            <td class="text-center p-3">(+12)85-4521-7568</td>
-                                            <td class="text-center p-3">$458</td>
-                                            <td class="text-center p-3">1st Sept 2021</td>
-                                            <td class="text-center p-3">
-                                                <div class="badge bg-soft-success rounded px-3 py-1">
-                                                    Paid
-                                                </div>
-                                            </td>
-                                            <td class="text-end p-3">
-                                                <a href="invoice.html" class="btn btn-sm btn-primary">Preview</a>
-                                                <a href="#" class="btn btn-sm btn-soft-primary ms-2">Print</a>
-                                            </td>
-                                        </tr>
-                                        <!-- End -->
-
-                                        <!-- Start -->
-                                        <tr>
-                                            <th class="p-3">#d06</th>
-                                            <td class="p-3">
-                                                <a href="#" class="text-primary">
-                                                    <div class="d-flex align-items-center">
-                                                        <img src="assets/images/client/06.jpg"
-                                                            class="avatar avatar-ex-small rounded-circle shadow"
-                                                            alt="">
-                                                        <span class="ms-2">Randall Case</span>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                            <td class="text-center p-3">(+12)85-4521-7568</td>
-                                            <td class="text-center p-3">$548</td>
-                                            <td class="text-center p-3">28th Aug 2021</td>
-                                            <td class="text-center p-3">
-                                                <div class="badge bg-soft-success rounded px-3 py-1">
-                                                    Paid
-                                                </div>
-                                            </td>
-                                            <td class="text-end p-3">
-                                                <a href="invoice.html" class="btn btn-sm btn-primary">Preview</a>
-                                                <a href="#" class="btn btn-sm btn-soft-primary ms-2">Print</a>
-                                            </td>
-                                        </tr>
-                                        <!-- End -->
-
-                                        <!-- Start -->
-                                        <tr>
-                                            <th class="p-3">#d07</th>
-                                            <td class="p-3">
-                                                <a href="#" class="text-primary">
-                                                    <div class="d-flex align-items-center">
-                                                        <img src="assets/images/client/07.jpg"
-                                                            class="avatar avatar-ex-small rounded-circle shadow"
-                                                            alt="">
-                                                        <span class="ms-2">Jerry Morena</span>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                            <td class="text-center p-3">(+12)85-4521-7568</td>
-                                            <td class="text-center p-3">$658</td>
-                                            <td class="text-center p-3">25th Aug 2021</td>
-                                            <td class="text-center p-3">
-                                                <div class="badge bg-soft-danger rounded px-3 py-1">
-                                                    Unpaid
-                                                </div>
-                                            </td>
-                                            <td class="text-end p-3">
-                                                <a href="invoice.html" class="btn btn-sm btn-primary">Preview</a>
-                                                <a href="#" class="btn btn-sm btn-soft-primary ms-2">Print</a>
-                                            </td>
-                                        </tr>
-                                        <!-- End -->
-
-                                        <!-- Start -->
-                                        <tr>
-                                            <th class="p-3">#d08</th>
-                                            <td class="p-3">
-                                                <a href="#" class="text-primary">
-                                                    <div class="d-flex align-items-center">
-                                                        <img src="assets/images/client/08.jpg"
-                                                            class="avatar avatar-ex-small rounded-circle shadow"
-                                                            alt="">
-                                                        <span class="ms-2">Lester McNally</span>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                            <td class="text-center p-3">(+12)85-4521-7568</td>
-                                            <td class="text-center p-3">$457</td>
-                                            <td class="text-center p-3">20th Aug 2021</td>
-                                            <td class="text-center p-3">
-                                                <div class="badge bg-soft-danger rounded px-3 py-1">
-                                                    Unpaid
-                                                </div>
-                                            </td>
-                                            <td class="text-end p-3">
-                                                <a href="invoice.html" class="btn btn-sm btn-primary">Preview</a>
-                                                <a href="#" class="btn btn-sm btn-soft-primary ms-2">Print</a>
-                                            </td>
-                                        </tr>
-                                        <!-- End -->
-
-                                        <!-- Start -->
-                                        <tr>
-                                            <th class="p-3">#d09</th>
-                                            <td class="p-3">
-                                                <a href="#" class="text-primary">
-                                                    <div class="d-flex align-items-center">
-                                                        <img src="assets/images/client/09.jpg"
-                                                            class="avatar avatar-ex-small rounded-circle shadow"
-                                                            alt="">
-                                                        <span class="ms-2">Christopher Burrell</span>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                            <td class="text-center p-3">(+12)85-4521-7568</td>
-                                            <td class="text-center p-3">$586</td>
-                                            <td class="text-center p-3">15th Aug 2021</td>
-                                            <td class="text-center p-3">
-                                                <div class="badge bg-soft-success rounded px-3 py-1">
-                                                    Paid
-                                                </div>
-                                            </td>
-                                            <td class="text-end p-3">
-                                                <a href="invoice.html" class="btn btn-sm btn-primary">Preview</a>
-                                                <a href="#" class="btn btn-sm btn-soft-primary ms-2">Print</a>
-                                            </td>
-                                        </tr>
-                                        <!-- End -->
-
-                                        <!-- Start -->
-                                        <tr>
-                                            <th class="p-3">#d10</th>
-                                            <td class="p-3">
-                                                <a href="#" class="text-primary">
-                                                    <div class="d-flex align-items-center">
-                                                        <img src="assets/images/client/10.jpg"
-                                                            class="avatar avatar-ex-small rounded-circle shadow"
-                                                            alt="">
-                                                        <span class="ms-2">Mary Skeens</span>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                            <td class="text-center p-3">(+12)85-4521-7568</td>
-                                            <td class="text-center p-3">$325</td>
-                                            <td class="text-center p-3">10th Aug 2021</td>
-                                            <td class="text-center p-3">
-                                                <div class="badge bg-soft-danger rounded px-3 py-1">
-                                                    Unpaid
-                                                </div>
-                                            </td>
-                                            <td class="text-end p-3">
-                                                <a href="invoice.html" class="btn btn-sm btn-primary">Preview</a>
-                                                <a href="#" class="btn btn-sm btn-soft-primary ms-2">Print</a>
-                                            </td>
-                                        </tr>
-                                        <!-- End -->
-                                    </tbody>
-                                </table>
+                                    </form>
+                                </div>
                             </div>
                         </div><!--end col-->
                     </div><!--end row-->
 
-                    <div class="row text-center">
-                        <!-- PAGINATION START -->
-                        <div class="col-12 mt-4">
-                            <div class="d-md-flex align-items-center text-center justify-content-between">
-                                <span class="text-muted me-3">Showing 1 - 10 out of 50</span>
-                                <ul class="pagination mb-0 justify-content-center mt-4 mt-sm-0">
-                                    <li class="page-item"><a class="page-link" href="javascript:void(0)"
-                                            aria-label="Previous">Prev</a></li>
-                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#"
-                                            aria-label="Next">Next</a></li>
-                                </ul>
-                            </div>
-                        </div><!--end col-->
-                        <!-- PAGINATION END -->
-                    </div><!--end row-->
+
                 </div>
             </div><!--end container-->
 
