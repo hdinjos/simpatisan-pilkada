@@ -203,12 +203,12 @@
                 <!-- sidebar-menu  -->
             </div>
             <!-- Sidebar Footer -->
-            <ul class="sidebar-footer list-unstyled mb-0">
+            {{-- <ul class="sidebar-footer list-unstyled mb-0">
                 <li class="list-inline-item mb-0">
                     <a href="https://1.envato.market/4n73n" target="_blank" class="btn btn-icon btn-soft-light"><i
                             class="ti ti-shopping-cart"></i></a> <small class="text-muted ms-1">Buy Now</small>
                 </li>
-            </ul>
+            </ul> --}}
             <!-- Sidebar Footer -->
         </nav>
         <!-- sidebar-wrapper  -->
@@ -304,7 +304,8 @@
                                                         src="{{ asset('storage/foto/' . $u->image) }}" />
                                                 </td>
                                                 <td class="p-3">
-                                                    {{-- <a href="invoice.html" class="btn btn-sm btn-primary">Lihat</a> --}}
+                                                    <a href="/admins/koordinators/{{ $u->id }}"
+                                                        class="btn btn-sm btn-primary">Lihat</a>
                                                     <button onclick="deleteData({{ $u->id }})"
                                                         data-bs-toggle="modal" data-bs-target="#exampleModal"
                                                         id="btnDelete{{ $u->id }}" data="{{ $u->id }}"
@@ -353,9 +354,7 @@
                                 <p class="mb-0 text-muted">©
                                     <script>
                                         document.write(new Date().getFullYear())
-                                    </script> Landrick. Design with <i
-                                        class="mdi mdi-heart text-danger"></i> by <a href="https://shreethemes.in/"
-                                        target="_blank" class="text-reset">Shreethemes</a>.
+                                    </script>
                                 </p>
                             </div>
                         </div><!--end col-->

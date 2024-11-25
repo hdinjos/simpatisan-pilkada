@@ -41,11 +41,31 @@
         </div> -->
     <!-- Loader -->
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Hapus Data</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Apakah Ingin Mengapus Data Ini?
+                </div>
+                <form method="POST" action="/admins/koordinators/delete" class="modal-footer">
+                    @csrf
+                    <input name="id" type="text" hidden id="inputDelete" />
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+                    <button type="submit" class="btn btn-primary">Ya</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <div class="page-wrapper landrick-theme toggled">
         <nav id="sidebar" class="sidebar-wrapper sidebar-dark">
             <div class="sidebar-content" data-simplebar style="height: calc(100% - 60px);">
-                <div class="sidebar-brand">
+                <div class="sidebar-brand text-center">
                     <a href="/admins/koordinators">
                         <span>COBLOS APP</span>
                         {{-- <img src="{{ asset('images/logo-dark.png') }}" height="24" class="logo-light-mode"
@@ -59,9 +79,8 @@
                 </div>
 
                 <ul class="sidebar-menu">
-                    <li><a href="index.html"><i class="ti ti-home me-2"></i>Summary</a></li>
-                    <li><a href="/admins/koordinators"><i class="ti ti-browser me-2"></i>Koordinator Partisipan</a>
-                    </li>
+                    {{-- <li><a href="index.html"><i class="ti ti-home me-2"></i>Summary</a></li> --}}
+                    <li><a href="/admins/koordinators"><i class="ti ti-browser me-2"></i>Koordinator Partisipan</a></li>
                     {{-- <li class="sidebar-dropdown">
                         <a href="javascript:void(0)"><i class="ti ti-browser me-2"></i>Layouts</a>
                         <div class="sidebar-submenu">
@@ -244,7 +263,7 @@
 
                     <div class="d-md-flex justify-content-between">
                         <div>
-                            <h5 class="mb-0">Tambah Koordinator Partisipan</h5>
+                            <h5 class="mb-0">Anggota</h5>
 
                             {{-- <nav aria-label="breadcrumb" class="d-inline-block mt-1">
                                 <ul class="breadcrumb breadcrumb-muted bg-transparent rounded mb-0 p-0">
@@ -254,54 +273,96 @@
                             </nav> --}}
                         </div>
 
-
+                        <div class="mt-4 mt-sm-0">
+                            <a href="/admins/koordinators/create" class="btn btn-primary">Tambah</a>
+                        </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-6 mt-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <form method="POST" action="/admins/koordinators" enctype="multipart/form-data">
-                                        @csrf
-                                        <div class="row">
-                                            <div class="col-12 mb-3">
-                                                <label class="form-label">Nama<span
-                                                        class="text-danger">*</span></label>
-                                                <input name="name" id="name" type="text" required
-                                                    class="form-control" placeholder="Nama">
-                                            </div>
-                                            <div class="col-12 mb-3">
-                                                <label class="form-label">Username<span
-                                                        class="text-danger">*</span></label>
-                                                <input name="username" id="name" type="text" required
-                                                    class="form-control" placeholder="Username">
-                                            </div>
-                                            <div class="col-12 mb-3">
-                                                <label class="form-label">Password<span
-                                                        class="text-danger">*</span></label>
-                                                <input name="password" id="name" type="text" required
-                                                    class="form-control" placeholder="Password">
-                                            </div>
-                                            <div class="col-12 mb-3">
-                                                <label class="form-label">Foto<span
-                                                        class="text-danger">*</span></label>
-                                                <input name="image" id="name" type="file" required
-                                                    class="form-control" placeholder="Foto">
-                                            </div>
-                                            <div class="col-12 mb-3">
-                                                <button class="btn btn-primary">Simpan</button>
-                                            </div>
+                        <div class="col-12 mt-4">
+                            <div class="table-responsive shadow rounded">
+                                <table class="table table-center bg-white mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th class="border-bottom p-3">Nama</th>
+                                            <th class="border-bottom p-3" style="min-width: 220px;">Nik</th>
+                                            <th class="border-bottom p-3" style="min-width: 200px;">Jenis Kelamin
+                                            </th>
+
+                                            <th class="border-bottom p-3" style="min-width: 200px;">Wilayah
+                                            </th>
+                                            <th class="border-bottom p-3" style="min-width: 200px;">Foto Badan/Wajah
+                                            </th>
+                                            <th class="border-bottom p-3" style="min-width: 200px;">Foto Ktp
+                                            </th>
+                                            {{-- <th class="border-bottom p-3" style="min-width: 200px;">Aksi
+                                            </th> --}}
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @foreach ($users as $u)
+                                            <tr>
+                                                <th class="p-3">{{ $u->name }}</th>
+                                                <td class="p-3">{{ $u->nik }}</td>
+                                                <td class="p-3">
+                                                    @if ($u->gender == 'male')
+                                                        Laki-Laki
+                                                    @else
+                                                        Perempuan
+                                                    @endif
+                                                </td>
+                                                <td class="p-3">{{ Str::title($u->wilayah) }}</td>
+                                                <td class="p-3">
+                                                    <img width="50px" height="50px"
+                                                        src="{{ asset('storage/image_self/' . $u->foto_self) }}" />
+                                                </td>
+                                                <td class="p-3">
+                                                    <img width="50px" height="50px"
+                                                        src="{{ asset('storage/image_ktp/' . $u->foto_ktp) }}" />
+                                                </td>
+
+                                                {{-- <td class="p-3">
+                                                    <img width="50px" height="50px"
+                                                        src="{{ asset('storage/foto/' . $u->image) }}" />
+                                                </td> --}}
+                                                {{-- <td class="p-3">
+                                                    <button onclick="deleteData({{ $u->id }})"
+                                                        data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                                        id="btnDelete{{ $u->id }}" data="{{ $u->id }}"
+                                                        class="btn btn-sm btn-soft-danger ms-2">Hapus</button>
+                                                </td> --}}
+                                            </tr>
+                                            <!-- End -->
+                                        @endforeach
 
 
-                                        </div>
 
-                                    </form>
-                                </div>
+
+                                    </tbody>
+                                </table>
                             </div>
                         </div><!--end col-->
                     </div><!--end row-->
 
-
+                    {{-- <div class="row text-center">
+                        <!-- PAGINATION START -->
+                        <div class="col-12 mt-4">
+                            <div class="d-md-flex align-items-center text-center justify-content-between">
+                                <span class="text-muted me-3">Showing 1 - 10 out of 50</span>
+                                <ul class="pagination mb-0 justify-content-center mt-4 mt-sm-0">
+                                    <li class="page-item"><a class="page-link" href="javascript:void(0)"
+                                            aria-label="Previous">Prev</a></li>
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#"
+                                            aria-label="Next">Next</a></li>
+                                </ul>
+                            </div>
+                        </div><!--end col-->
+                        <!-- PAGINATION END -->
+                    </div><!--end row--> --}}
                 </div>
             </div><!--end container-->
 
@@ -314,9 +375,7 @@
                                 <p class="mb-0 text-muted">©
                                     <script>
                                         document.write(new Date().getFullYear())
-                                    </script> Landrick. Design with <i
-                                        class="mdi mdi-heart text-danger"></i> by <a href="https://shreethemes.in/"
-                                        target="_blank" class="text-reset">Shreethemes</a>.
+                                    </script>
                                 </p>
                             </div>
                         </div><!--end col-->
@@ -414,6 +473,14 @@
     <!-- Main Js -->
     <script src="{{ asset('js/plugins.init.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
+
+    <script>
+        function deleteData(id) {
+            const inputDelete = document.querySelector("#inputDelete");
+            inputDelete.value = id;
+
+        }
+    </script>
 
 </body>
 

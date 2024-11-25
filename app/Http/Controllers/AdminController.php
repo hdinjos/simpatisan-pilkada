@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Simpatisan;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -70,6 +71,9 @@ class AdminController extends Controller
     public function show(string $id)
     {
         //
+
+        $users = Simpatisan::where("user_id", $id)->get();
+        return view('admin/koordinators/detail', compact('users'));
     }
 
     /**
