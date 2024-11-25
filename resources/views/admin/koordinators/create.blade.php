@@ -285,8 +285,8 @@
                                             <div class="col-12 mb-3">
                                                 <label class="form-label">Foto<span
                                                         class="text-danger">*</span></label>
-                                                <input name="image" id="name" type="file" required
-                                                    class="form-control" placeholder="Foto">
+                                                <input accept=".png, .jpeg, .jpg" name="image" id="name"
+                                                    type="file" required class="form-control" placeholder="Foto">
                                             </div>
                                             <div class="col-12 mb-3">
                                                 <button class="btn btn-primary">Simpan</button>
@@ -314,9 +314,7 @@
                                 <p class="mb-0 text-muted">©
                                     <script>
                                         document.write(new Date().getFullYear())
-                                    </script> Landrick. Design with <i
-                                        class="mdi mdi-heart text-danger"></i> by <a href="https://shreethemes.in/"
-                                        target="_blank" class="text-reset">Shreethemes</a>.
+                                    </script>
                                 </p>
                             </div>
                         </div><!--end col-->
