@@ -52,9 +52,9 @@
                 <div class="modal-body">
                     Apakah Ingin Mengapus Data Ini?
                 </div>
-                <form method="POST" action="/admins/koordinators/delete" class="modal-footer">
+                <form id="formDelete" method="POST" action="/" class="modal-footer">
                     @csrf
-                    <input name="id" type="text" hidden id="inputDelete" />
+                    <input name="user_id" type="text" hidden id="inputDelete" />
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
                     <button type="submit" class="btn btn-primary">Ya</button>
                 </form>
@@ -295,8 +295,8 @@
                                             </th>
                                             <th class="border-bottom p-3" style="min-width: 200px;">Foto Ktp
                                             </th>
-                                            {{-- <th class="border-bottom p-3" style="min-width: 200px;">Aksi
-                                            </th> --}}
+                                            <th class="border-bottom p-3" style="min-width: 200px;">Aksi
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -326,12 +326,13 @@
                                                     <img width="50px" height="50px"
                                                         src="{{ asset('storage/foto/' . $u->image) }}" />
                                                 </td> --}}
-                                                {{-- <td class="p-3">
-                                                    <button onclick="deleteData({{ $u->id }})"
+                                                <td class="p-3">
+                                                    <button
+                                                        onclick="deleteData({{ $u->id }}, {{ $u->user_id }})"
                                                         data-bs-toggle="modal" data-bs-target="#exampleModal"
                                                         id="btnDelete{{ $u->id }}" data="{{ $u->id }}"
                                                         class="btn btn-sm btn-soft-danger ms-2">Hapus</button>
-                                                </td> --}}
+                                                </td>
                                             </tr>
                                             <!-- End -->
                                         @endforeach
@@ -475,9 +476,13 @@
     <script src="{{ asset('js/app.js') }}"></script>
 
     <script>
-        function deleteData(id) {
+        function deleteData(id, userId) {
+            console.log(userId);
+            console.log(id);
             const inputDelete = document.querySelector("#inputDelete");
-            inputDelete.value = id;
+            const formDelete = document.querySelector("#formDelete");
+            inputDelete.value = userId;
+            formDelete.setAttribute("action", `/admins/koordinators/${id}`)
 
         }
     </script>

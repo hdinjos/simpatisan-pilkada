@@ -89,7 +89,21 @@ class AdminController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        if ($request->user_id && $id) {
+
+            $record = Simpatisan::where([
+                ['id', $id],
+                ['user_id', $request->user_id]
+            ])->first();
+            if ($record) {
+                unlink(storage_path('app/public/image_ktp/' . $record->foto_ktp));
+                unlink(storage_path('app/public/image_self/' . $record->foto_self));
+                $record->delete();
+            }
+            return redirect('/admins/koordinators/detail/' . $request->user_id);
+        }
+        return redirect('/admins/koordinators/detail/' . $request->user_id);
     }
 
     /**

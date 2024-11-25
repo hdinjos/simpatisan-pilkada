@@ -28,7 +28,7 @@
     <link href="{{ asset('css/style2.css') }}" rel="stylesheet" type="text/css" id="theme-opt" />
     <style>
         .my-custom-container {
-            width: 500px;
+            /* width: 500px; */
             min-height: 100vh;
             /* display: flex; */
             /* align-items: center; */
@@ -37,6 +37,10 @@
             background-color: black;
             color: white;
             overflow-y: auto;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-image: url({{ asset('images/bg-jos.png') }});
             /* position: relative; */
         }
 

@@ -26,25 +26,32 @@
     <link href="https://unicons.iconscout.com/release/v3.0.6/css/line.css" rel="stylesheet">
     <!-- Css -->
     <link href="{{ asset('css/style2.css') }}" rel="stylesheet" type="text/css" id="theme-opt" />
+
     <style>
         .my-custom-container {
-            width: 500px;
+            /* width: 500px; */
             border: 1px solid black;
             height: 100vh;
-            width: 500px;
+            /* width: 500px; */
             min-height: 100vh;
             /* display: flex; */
             /* align-items: center; */
             /* justify-content: center; */
+            position: relative;
             flex-direction: column;
-            background-color: black;
             color: white;
             overflow-y: auto;
-            position: relative;
+            background-color: black;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-image: url({{ asset('images/bg-jos.png') }});
         }
 
+
+
         .btn-tambah {
-            position: absolute;
+            position: fixed;
             bottom: 30px;
             right: 30px;
         }
@@ -69,6 +76,13 @@
             border-bottom: 1px solid #FEDE58;
             border-top: 1px solid #FEDE58;
         }
+
+        .user {
+            color: #FEDE58;
+            font-size: 20px;
+            line-height: 15px;
+            font-weight: bold;
+        }
     </style>
 
 </head>
@@ -76,14 +90,23 @@
 <body>
 
     <div class="container my-custom-container">
-        <div class="row mb-3">
-            <div class="col-12 text-center">
-                <form method="POST" action="/auth/koordinators/logout" class="p-3 text-center">Selamat Datang
+        <div class="row mt-3 mb-3">
+            <div class="d-flex justify-content-between mb-2">
 
+                <div>
+                    <div>
+                        Selamat Datang,
+                        <div class="user">{{ Auth::user()->name }}</div>
+                    </div>
+                </div>
+
+                <form method="POST" action="/auth/koordinators/logout" class="text-center">
                     @csrf
-                    <h4>{{ Auth::user()->name }}</h4>
                     <button class="btn btn-primary">Logout</button>
                 </form>
+
+            </div>
+            <div id="dateUser" class="col-12 text-center">
             </div>
 
         </div>
@@ -172,6 +195,25 @@
     <!-- Main Js -->
     {{-- <script src="{{ asset('js/plugins.init.js') }}"></script> --}}
     {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        const months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Augustus", "September",
+            "Oktober", "November", "Desember"
+        ];
+
+        const d = new Date();
+        let date = d.getDate()
+        let month = months[d.getMonth()];
+        let year = d.getFullYear();
+
+        let fullDate = `${date}, ${month} ${year}`
+        const dateUser = document.querySelector("#dateUser");
+        dateUser.innerHTML = fullDate;
+
+        @if (\Session::has('success'))
+            Swal.fire("Tambah Data Berhasil");
+        @endif
+    </script>
 
 </body>
 

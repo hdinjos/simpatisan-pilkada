@@ -69,9 +69,9 @@ class KoordinatorController extends Controller
                 'user_id'   => Auth::user()->id,
 
             ]);
-            return redirect('/koordinators');
+            return redirect('/koordinators')->with('success', 'Tambah Data Berhasil');
         } else {
-            return $this()->index;
+            return redirect('/koordinators');
         }
         // dd($request->name);
     }

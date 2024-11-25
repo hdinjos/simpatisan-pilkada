@@ -16,6 +16,7 @@ Route::post('auth/admins/logout', [AuthController::class, 'adminLogout'])->middl
 
 Route::resource('admins/koordinators', AdminController::class)->middleware(CheckUserRoleAdmin::class);
 Route::post('admins/koordinators/delete', [AdminController::class, 'koordinatorDelete'])->middleware(CheckUserRoleAdmin::class);
+Route::post('admins/koordinators/{id}', [AdminController::class, 'update'])->middleware(CheckUserRoleAdmin::class);
 Route::resource('koordinators', KoordinatorController::class)->middleware(CheckUserRoleKoordinator::class);
 
 Route::get('auth/koordinators/login', [AuthController::class, 'formLoginKoordinator']);

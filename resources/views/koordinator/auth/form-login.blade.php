@@ -27,24 +27,32 @@
     <!-- Css -->
     <link href="{{ asset('css/style2.css') }}" rel="stylesheet" type="text/css" id="theme-opt" />
     <style>
+        /* @media only screen and (min-width: 0px) { */
+
         .my-custom-container {
-            width: 500px;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            background-color: black;
             color: white;
             overflow-y: auto;
+            /* opacity: 0.1; */
+            background-color: black;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-image: url({{ asset('images/bg-jos.png') }});
         }
+
+        /* } */
     </style>
 
 </head>
 
 <body>
 
-    <div class="container my-custom-container">
+    <div class="container-md my-custom-container">
         {{-- <div class="row mb-3">
             <div class="col-12 text-centerß">
                 <div class="p-3 text-center">Selemat Datang Fariz</div>
