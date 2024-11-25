@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Landrick - Invoice List</title>
+    <title>Tambah Koordinator Partisipan</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Premium Bootstrap 5 Admin Dashboard Template" />
     <meta name="keywords" content="Saas, CRM, Admin, Dashboard, Modern, Classic" />
@@ -414,6 +414,10 @@
     <!-- Main Js -->
     <script src="{{ asset('js/plugins.init.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
+
+    <script>
+    $('#title').html('Tambah Koordinator Partisipan')
+    </script>
 
 </body>
 
