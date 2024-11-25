@@ -59,8 +59,14 @@
                 </div>
 
                 <ul class="sidebar-menu">
-                    <li><a href="index.html"><i class="ti ti-home me-2"></i>Summary</a></li>
+                    {{-- <li><a href="index.html"><i class="ti ti-home me-2"></i>Summary</a></li> --}}
                     <li><a href="/admins/koordinators"><i class="ti ti-browser me-2"></i>Koordinator Partisipan</a>
+                    </li>
+                    <li>
+                        <a href="/admins/tps">
+                            <i class="ti ti-box me-2"></i>
+                            Monitoring TPS
+                        </a>
                     </li>
                     {{-- <li class="sidebar-dropdown">
                         <a href="javascript:void(0)"><i class="ti ti-browser me-2"></i>Layouts</a>

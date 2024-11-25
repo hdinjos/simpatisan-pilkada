@@ -36,7 +36,7 @@
 
         <div class="d-md-flex justify-content-between">
             <div>
-                <h5 class="mb-0">Koordinator Partisipan</h5>
+                <h5 class="mb-0">Monitoring TPS</h5>
 
                 {{-- <nav aria-label="breadcrumb" class="d-inline-block mt-1">
                 <ul class="breadcrumb breadcrumb-muted bg-transparent rounded mb-0 p-0">
@@ -46,9 +46,9 @@
             </nav> --}}
             </div>
 
-            <div class="mt-4 mt-sm-0">
+            {{-- <div class="mt-4 mt-sm-0">
                 <a href="/admins/koordinators/create" class="btn btn-primary">Tambah</a>
-            </div>
+            </div> --}}
         </div>
 
         <div class="row">
@@ -57,31 +57,45 @@
                     <table class="table table-center bg-white mb-0">
                         <thead>
                             <tr>
-                                <th class="border-bottom p-3">Nama</th>
-                                <th class="border-bottom p-3" style="min-width: 220px;">Username</th>
-                                <th class="border-bottom p-3" style="min-width: 200px;">Foto
+                                <th class="border-bottom p-3">Nama TPS</th>
+                                <th class="border-bottom p-3" style="min-width: 220px;">Paslon 1</th>
+                                <th class="border-bottom p-3" style="min-width: 200px;">Paslon 2
                                 </th>
+
+                                <th class="border-bottom p-3" style="min-width: 200px;">Tidak Sah
+                                </th>
+
+                                {{-- <td class="p-3">
+                                    <img width="50px" height="50px" src="{{ asset('storage/foto/' . $u->image) }}" />
+
+                                </td> --}}
+
+
+                                {{-- <a href="/admins/koordinators/{{ $u->id }}"
+                                    class="btn btn-sm btn-primary">Lihat</a> --}}
 
                                 <th class="border-bottom p-3" style="min-width: 200px;">Aksi
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($users as $u)
+                            @foreach ($tps as $t)
                                 <tr>
-                                    <th class="p-3">{{ $u->name }}</th>
-                                    <td class="p-3">{{ $u->username }}</td>
-                                    <td class="p-3">
+                                    <th class="p-3">{{ $t->nama_tps }}</th>
+                                    <td class="p-3">{{ $t->paslon1 }} Suara</td>
+                                    <td class="p-3">{{ $t->paslon2 }} Suara</td>
+                                    <td class="p-3">{{ $t->tidak_sah }} Suara</td>
+                                    {{-- <td class="p-3">
                                         <img width="50px" height="50px" src="{{ asset('storage/foto/' . $u->image) }}" />
 
-                                    </td>
+                                    </td> --}}
                                     <td class="p-3">
-                                        <a href="/admins/koordinators/{{ $u->id }}"
-                                            class="btn btn-sm btn-primary">Lihat</a>
-                                        <button onclick="deleteData({{ $u->id }})" data-bs-toggle="modal"
+                                        <a target="_blank" href="{{ asset('storage/tps/' . $t->c1) }}"
+                                            class="btn btn-sm btn-primary">Lihat C1</a>
+                                        {{-- <button onclick="deleteData({{ $u->id }})" data-bs-toggle="modal"
                                             data-bs-target="#exampleModal" id="btnDelete{{ $u->id }}"
                                             data="{{ $u->id }}"
-                                            class="btn btn-sm btn-soft-danger ms-2">Hapus</button>
+                                            class="btn btn-sm btn-soft-danger ms-2">Hapus</button> --}}
                                     </td>
                                 </tr>
                                 <!-- End -->

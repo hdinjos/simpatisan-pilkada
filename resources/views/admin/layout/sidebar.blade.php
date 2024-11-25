@@ -19,6 +19,12 @@
                     Koordinator Partisipan
                 </a>
             </li>
+            <li>
+                <a href="/admins/tps">
+                    <i class="ti ti-box me-2"></i>
+                    Monitoring TPS
+                </a>
+            </li>
             {{-- <li class="sidebar-dropdown">
                 <a href="javascript:void(0)"><i class="ti ti-browser me-2"></i>Layouts</a>
                 <div class="sidebar-submenu">

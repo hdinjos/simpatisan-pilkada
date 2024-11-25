@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Tps;
 use App\Models\Simpatisan;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -17,6 +18,12 @@ class AdminController extends Controller
     {
         $users = User::where("role", "KOOR")->get();
         return view('admin/koordinators/index', compact('users'));
+    }
+
+    public function indexTps()
+    {
+        $tps = Tps::get();
+        return view('admin/koordinators/tps', compact('tps'));
     }
 
     /**

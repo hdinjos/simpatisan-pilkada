@@ -16,11 +16,12 @@ Route::post('auth/admins/login', [AuthController::class, 'loginAdmin']);
 Route::post('auth/admins/logout', [AuthController::class, 'adminLogout'])->middleware(CheckUserRoleAdmin::class);
 
 Route::resource('admins/koordinators', AdminController::class)->middleware(CheckUserRoleAdmin::class);
+Route::get('admins/tps', [AdminController::class, 'indexTps'])->middleware(CheckUserRoleAdmin::class);
 Route::post('admins/koordinators/delete', [AdminController::class, 'koordinatorDelete'])->middleware(CheckUserRoleAdmin::class);
 Route::post('admins/koordinators/{id}', [AdminController::class, 'update'])->middleware(CheckUserRoleAdmin::class);
 Route::resource('koordinators', KoordinatorController::class)->middleware(CheckUserRoleKoordinator::class);
 
-Route::prefix('koordinators/{koordinator}')->group(function() {
+Route::prefix('koordinators/{koordinator}')->group(function () {
     Route::resource('tps', TpsController::class);
 });
 

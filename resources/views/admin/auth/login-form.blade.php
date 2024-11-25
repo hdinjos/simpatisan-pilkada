@@ -85,7 +85,7 @@
                             <p class="mb-0 text-muted mt-3 text-center">©
                                 <script>
                                     document.write(new Date().getFullYear())
-                                </script>2024
+                                </script>
                             </p>
                         </form>
                     </div>
