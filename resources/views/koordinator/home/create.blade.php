@@ -34,6 +34,7 @@
             /* align-items: center; */
             /* justify-content: center; */
             /* flex-direction: column; */
+            max-width: 540px;
             background-color: black;
             color: white;
             overflow-y: auto;
@@ -67,7 +68,7 @@
 
 <body>
 
-    <div class="container my-custom-container">
+    <div class="container-sm my-custom-container">
         <div class="row mb-3">
             <div class="col-12 text-centerß">
                 <div class="p-3 text-center">Tambah Data Partisipan</div>

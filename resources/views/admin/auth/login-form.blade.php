@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Landrick - Invoice List</title>
+    <title>Coblos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Premium Bootstrap 5 Admin Dashboard Template" />
     <meta name="keywords" content="Saas, CRM, Admin, Dashboard, Modern, Classic" />

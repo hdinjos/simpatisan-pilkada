@@ -34,6 +34,7 @@
             height: 100vh;
             /* width: 500px; */
             min-height: 100vh;
+            max-width: 540px;
             /* display: flex; */
             /* align-items: center; */
             /* justify-content: center; */
@@ -89,7 +90,7 @@
 
 <body>
 
-    <div class="container my-custom-container">
+    <div class="container-sm my-custom-container">
         <div class="row mt-3 mb-3">
             <div class="d-flex justify-content-between mb-2">
 

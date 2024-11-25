@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Landrick - Invoice List</title>
+    <title>Coblos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Premium Bootstrap 5 Admin Dashboard Template" />
     <meta name="keywords" content="Saas, CRM, Admin, Dashboard, Modern, Classic" />
@@ -31,6 +31,7 @@
 
         .my-custom-container {
             min-height: 100vh;
+            max-width: 540px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -52,7 +53,7 @@
 
 <body>
 
-    <div class="container-md my-custom-container">
+    <div class="container-sm my-custom-container">
         {{-- <div class="row mb-3">
             <div class="col-12 text-centerß">
                 <div class="p-3 text-center">Selemat Datang Fariz</div>
