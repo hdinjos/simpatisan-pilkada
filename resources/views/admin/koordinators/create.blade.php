@@ -413,6 +413,10 @@
     <script src="{{ asset('js/plugins.init.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 
+    <script>
+        $('#title').html('Tambah Koordinator Partisipan')
+    </script>
+
 </body>
 
 </html>
