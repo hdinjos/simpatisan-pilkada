@@ -76,6 +76,8 @@
 
                                     </td>
                                     <td class="p-3">
+                                        <a href="/admins/koordinators/changepassword/{{ $u->id }}"
+                                            class="btn btn-sm btn-success">Ganti Password</a>
                                         <a href="/admins/koordinators/{{ $u->id }}"
                                             class="btn btn-sm btn-primary">Lihat</a>
                                         <button onclick="deleteData({{ $u->id }})" data-bs-toggle="modal"
@@ -114,6 +116,7 @@
     </div>
     <!--end row--> --}}
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
         function deleteData(id) {
@@ -121,6 +124,16 @@
             inputDelete.value = id;
 
         }
+
+
+
+        @if (\Session::has('success'))
+            Swal.fire('Ganti Password Berhasil');
+        @endif
+
+        @if (\Session::has('failed'))
+            Swal.fire('Ganti Password Gagal');
+        @endif
 
         $('#title').html('Koordinator Partisipan')
     </script>

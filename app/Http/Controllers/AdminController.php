@@ -132,4 +132,25 @@ class AdminController extends Controller
         }
         return redirect('/admins/koordinators');
     }
+
+    public function changePasswordForm($id)
+    {
+        return view('admin/koordinators/changepassword', compact('id'));
+    }
+
+
+    public function changePassword(Request $request)
+    {
+        if ($request->new_password && $request->user_id) {
+            $user = User::find($request->user_id);
+            if ($user) {
+                $hashPass = Hash::make($request->new_password);
+                $user->update(['password' => $hashPass]);
+                return  redirect('/admins/koordinators')->with('success', 'Ganti Password Berhasil');
+            }
+            return  redirect('/admins/koordinators')->with('failed', 'Ganti Password Gagal');
+        }
+
+        return  redirect('/admins/koordinators')->with('failed', 'Ganti Password Gagal');
+    }
 }
