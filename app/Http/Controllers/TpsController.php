@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Tps;
+
 
 class TpsController extends Controller
 {
@@ -11,7 +14,8 @@ class TpsController extends Controller
      */
     public function index()
     {
-        return view('koordinator.tps.index');
+        $tps = Tps::where('user_id', Auth::user()->id)->get();
+        return view('koordinator.tps.index', compact('tps'));
     }
 
     /**
@@ -27,7 +31,29 @@ class TpsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->hasFile('c1')) {
+
+            //upload new image
+            $imageC1 = $request->file('c1');
+
+            $imageC1Hasname = $imageC1->hashName();
+
+            $imageC1->storeAs('tps', $imageC1Hasname, 'public');
+
+
+            Tps::create([
+                'nama_tps' => $request->nama_tps,
+                'paslon1' => $request->paslon1,
+                'paslon2' => $request->paslon2,
+                'tidak_sah' => $request->tidak_sah,
+                'c1' => $imageC1Hasname,
+                'user_id'   => Auth::user()->id,
+
+            ]);
+            return redirect('/koordinators/' . Auth::user()->id . '/tps')->with('success', 'Tambah Data Berhasil');
+        } else {
+            return redirect('/koordinators/' . Auth::user()->id . '/tps');
+        }
     }
 
     /**

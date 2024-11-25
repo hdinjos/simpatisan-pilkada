@@ -17,6 +17,9 @@ return new class extends Migration
             $table->integer('paslon1');
             $table->integer('paslon2');
             $table->integer('tidak_sah');
+            $table->string('c1');
+            $table->bigInteger('user_id')->unsigned()->index(); // this is working
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

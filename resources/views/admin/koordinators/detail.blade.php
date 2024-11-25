@@ -274,7 +274,7 @@
                         </div>
 
                         <div class="mt-4 mt-sm-0">
-                            <a href="/admins/koordinators/create" class="btn btn-primary">Tambah</a>
+                            <a href="/admins/koordinators" class="btn btn-primary">Kembali</a>
                         </div>
                     </div>
 

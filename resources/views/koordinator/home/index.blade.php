@@ -29,15 +29,10 @@
 
     <style>
         .my-custom-container {
-            /* width: 500px; */
             border: 1px solid black;
             height: 100vh;
-            /* width: 500px; */
             min-height: 100vh;
             max-width: 540px;
-            /* display: flex; */
-            /* align-items: center; */
-            /* justify-content: center; */
             position: relative;
             flex-direction: column;
             color: white;
@@ -84,6 +79,10 @@
             line-height: 15px;
             font-weight: bold;
         }
+
+        .menu {
+            border: 1px solid #FEDE58;
+        }
     </style>
 
 </head>
@@ -103,7 +102,36 @@
 
                 <form method="POST" action="/auth/koordinators/logout" class="text-center">
                     @csrf
-                    <button class="btn btn-primary">Logout</button>
+                    {{-- <button class="btn btn-primary">Logout</button> --}}
+                    <li class="list-inline-item mb-0 ms-1">
+                        <div class="dropdown dropdown-primary">
+                            <a href="#" class="btn btn-outline-primary" data-bs-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <i class="ti ti-menu-2"></i> Menu
+                            </a>
+
+                            <div class="dropdown-menu dd-menu dropdown-menu-end bg-black shadow menu mt-3 py-3"
+                                style="min-width: 200px">
+                                {{-- <a class="dropdown-item d-flex align-items-center text-dark pb-3" href="profile.html">
+                                    <img src="assets/images/client/05.jpg"
+                                        class="avatar avatar-md-sm rounded-circle border shadow" alt="" />
+                                    <div class="flex-1 ms-2">
+                                        <span class="d-block">Cristina Julia</span>
+                                        <small class="text-muted">UI / UX Designer</small>
+                                    </div>
+                                </a> --}}
+
+                                {{-- <div class="dropdown-divider border-top"></div>  --}}
+                                <a class="dropdown-item text-white"
+                                    href="/koordinators/{{ Auth::user()->id }}/tps"><span
+                                        class="mb-0 d-inline-block me-1"><i class="ti ti-box"></i></span>
+                                    TPS</a>
+                                <button type="submit" class="dropdown-item text-white"><span
+                                        class="mb-0 d-inline-block me-1"><i class="ti ti-logout"></i></span>
+                                    Logout</button>
+                            </div>
+                        </div>
+                    </li>
                 </form>
 
             </div>
