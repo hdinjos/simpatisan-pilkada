@@ -14,12 +14,14 @@ return new class extends Migration
         Schema::create('tps', function (Blueprint $table) {
             $table->id();
             $table->string('nama_tps');
+            $table->string('kecamatan');
+            $table->string('kelurahan');
             $table->integer('paslon1');
             $table->integer('paslon2');
             $table->integer('tidak_sah');
             $table->string('c1');
-            $table->bigInteger('user_id')->unsigned()->index(); // this is working
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->bigInteger('saksi_id')->unsigned()->index(); // this is working
+            $table->foreign('saksi_id')->references('id')->on('saksi')->onDelete('cascade');
             $table->timestamps();
         });
     }
