@@ -20,6 +20,8 @@ Route::post('auth/admins/logout', [AuthController::class, 'adminLogout'])->middl
 
 Route::resource('admins/koordinators', AdminController::class)->middleware(CheckUserRoleAdmin::class);
 Route::get('admins/tps', [AdminController::class, 'indexTps'])->middleware(CheckUserRoleAdmin::class);
+Route::post('admins/tps', [AdminController::class, 'calcTps'])->middleware(CheckUserRoleAdmin::class);
+Route::get('admins/tps-first', [AdminController::class, 'calcTpsFirst'])->middleware(CheckUserRoleAdmin::class);
 Route::get('admins/koordinators/changepassword/{id}', [AdminController::class, 'changePasswordForm'])->middleware(CheckUserRoleAdmin::class);
 Route::post('admins/koordinators/changepassword', [AdminController::class, 'changePassword'])->middleware(CheckUserRoleAdmin::class);
 Route::post('admins/koordinators/delete', [AdminController::class, 'koordinatorDelete'])->middleware(CheckUserRoleAdmin::class);

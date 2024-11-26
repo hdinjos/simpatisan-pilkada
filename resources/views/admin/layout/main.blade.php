@@ -11,6 +11,7 @@
     <meta name="email" content="support@shreethemes.in" />
     <meta name="website" content="https://shreethemes.in" />
     <meta name="Version" content="v3.8.0" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
     <!-- Bootstrap -->
@@ -26,8 +27,10 @@
     <link href="https://unicons.iconscout.com/release/v3.0.6/css/line.css" rel="stylesheet">
     <!-- Css -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" id="theme-opt" />
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 </head>
 
 <style>
@@ -70,8 +73,10 @@
                         <a href="#" class="logo-icon me-3">
                             <img src="assets/images/logo-icon.png" height="30" class="small" alt="">
                             <span class="big">
-                                <img src="assets/images/logo-dark.png" height="24" class="logo-light-mode" alt="">
-                                <img src="assets/images/logo-light.png" height="24" class="logo-dark-mode" alt="">
+                                <img src="assets/images/logo-dark.png" height="24" class="logo-light-mode"
+                                    alt="">
+                                <img src="assets/images/logo-light.png" height="24" class="logo-dark-mode"
+                                    alt="">
                             </span>
                         </a>
                         <a id="close-sidebar" class="btn btn-icon btn-soft-light" href="javascript:void(0)">
@@ -133,7 +138,8 @@
                                             class="img-fluid rounded-md shadow-md d-block" alt=""><span
                                             class="text-muted mt-2 d-block">LTR Version</span></a></li>
                                 <li class="d-grid"><a href="javascript:void(0)" class="dark-rtl-version t-rtl-dark"
-                                        onclick="setTheme('style-dark-rtl')"><img src="assets/images/demos/dark-rtl.png"
+                                        onclick="setTheme('style-dark-rtl')"><img
+                                            src="assets/images/demos/dark-rtl.png"
                                             class="img-fluid rounded-md shadow-md d-block" alt=""><span
                                             class="text-muted mt-2 d-block">RTL Version</span></a></li>
                                 <li class="d-grid"><a href="javascript:void(0)" class="dark-ltr-version t-ltr-dark"
@@ -148,8 +154,8 @@
                                         onclick="setTheme('style')"><img src="assets/images/demos/ltr.png"
                                             class="img-fluid rounded-md shadow-md d-block" alt=""><span
                                             class="text-muted mt-2 d-block">Light Version</span></a></li>
-                                <li class="d-grid"><a href="../landing/index.html" target="_blank" class="mt-4"><img
-                                            src="assets/images/demos/landing.png"
+                                <li class="d-grid"><a href="../landing/index.html" target="_blank"
+                                        class="mt-4"><img src="assets/images/demos/landing.png"
                                             class="img-fluid rounded-md shadow-md d-block" alt=""><span
                                             class="text-muted mt-2 d-block">Landing Demos</span></a></li>
                             </ul>
@@ -175,8 +181,8 @@
                         class="rounded"><i class="ti ti-brand-twitter align-middle" title="twitter"></i></a></li>
                 <li class="list-inline-item mb-0"><a href="mailto:support@shreethemes.in" class="rounded"><i
                             class="ti ti-mail align-middle" title="email"></i></a></li>
-                <li class="list-inline-item mb-0"><a href="https://shreethemes.in" target="_blank" class="rounded"><i
-                            class="ti ti-world align-middle" title="website"></i></a></li>
+                <li class="list-inline-item mb-0"><a href="https://shreethemes.in" target="_blank"
+                        class="rounded"><i class="ti ti-world align-middle" title="website"></i></a></li>
             </ul>
             <!--end icon-->
         </div>

@@ -20,13 +20,7 @@ class AdminController extends Controller
         return view('admin/koordinators/index', compact('users'));
     }
 
-    public function indexTps()
-    {
-        $tps = Tps::join('saksis', 'saksis.id', '=', 'tps.saksi_id')
-            ->select('tps.*', 'saksis.name as saksi_name', 'saksis.phone')
-            ->get();
-        return view('admin/koordinators/tps', compact('tps'));
-    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -154,5 +148,146 @@ class AdminController extends Controller
         }
 
         return  redirect('/admins/koordinators')->with('failed', 'Ganti Password Gagal');
+    }
+
+    public function indexTps(Request $request)
+    {
+
+        $tps = Tps::join('saksis', 'saksis.id', '=', 'tps.saksi_id')
+            ->select('tps.*', 'saksis.name as saksi_name', 'saksis.phone')
+            ->get();
+
+        return view('admin/koordinators/tps', compact('tps'));
+    }
+
+    public function calcTps(Request $request)
+    {
+        // Return a JSON response
+
+        $tps = null;
+        // dd($request->filled('kecamatan'));
+        $kecamatan = $request->kecamatan;
+        $suara = $request->suara;
+        $isPaslon1 = $request->suara == 'paslon1';
+        $isPaslon2 = $request->suara == 'paslon2';
+        $isTidakSah = $request->suara == 'tidak_sah';
+        $totalPaslon1 = 0;
+        $totalPaslon2 = 0;
+        $totalTidakSah = 0;
+        $totalAll = 0;
+
+        if (!$request->filled('kecamatan') && !$request->filled('suara')) {
+            $query = Tps::join('saksis', 'saksis.id', '=', 'tps.saksi_id')
+                ->select('tps.*', 'saksis.name as saksi_name', 'saksis.phone');
+
+            $tps = $query->get();
+            $totalPaslon1 = $query->sum("paslon1");
+            $totalPaslon2 = $query->sum("paslon2");
+            $totalTidakSah = $query->sum("tidak_sah");
+            $totalAll = $totalPaslon1 + $totalPaslon2 + $totalTidakSah;
+        }
+
+        if ($request->filled('kecamatan') && $request->filled('suara')) {
+
+            if ($isPaslon1) {
+                $query = Tps::where('kecamatan', $kecamatan)
+                    ->join('saksis', 'saksis.id', '=', 'tps.saksi_id')
+                    ->select('tps.*', 'saksis.name as saksi_name', 'saksis.phone');
+                $tps = $query->get();
+                $totalPaslon1 = $query->sum("paslon1");
+                $totalPaslon2 = $query->sum("paslon2");
+                $totalTidakSah = $query->sum("tidak_sah");
+                $totalAll = $totalPaslon1 + $totalPaslon2 + $totalTidakSah;
+            } else if ($isPaslon2) {
+                $tps = Tps::where('kecamatan', $kecamatan)
+                    ->join('saksis', 'saksis.id', '=', 'tps.saksi_id')
+                    ->select('tps.*', 'saksis.name as saksi_name', 'saksis.phone')
+                    ->get();
+            } else if ($isTidakSah) {
+                $query = Tps::where('kecamatan', $kecamatan)
+                    ->join('saksis', 'saksis.id', '=', 'tps.saksi_id')
+                    ->select('tps.*', 'saksis.name as saksi_name', 'saksis.phone');
+                $tps = $query->get();
+                $totalPaslon1 = $query->sum("paslon1");
+                $totalPaslon2 = $query->sum("paslon2");
+                $totalTidakSah = $query->sum("tidak_sah");
+                $totalAll = $totalPaslon1 + $totalPaslon2 + $totalTidakSah;
+            }
+        } else if ($request->filled('kecamatan')) {
+            $query = Tps::where('kecamatan', $kecamatan)
+                ->join('saksis', 'saksis.id', '=', 'tps.saksi_id')
+                ->select('tps.*', 'saksis.name as saksi_name', 'saksis.phone');
+            $tps = $query->get();
+            $totalPaslon1 = $query->sum("paslon1");
+            $totalPaslon2 = $query->sum("paslon2");
+            $totalTidakSah = $query->sum("tidak_sah");
+            $totalAll = $totalPaslon1 + $totalPaslon2 + $totalTidakSah;
+        } else if ($request->filled('suara')) {
+            if ($isPaslon1) {
+                $query = Tps::join('saksis', 'saksis.id', '=', 'tps.saksi_id')
+                    ->select('tps.*', 'saksis.name as saksi_name', 'saksis.phone');
+                $tps = $query->get();
+                $totalPaslon1 = $query->sum("paslon1");
+                $totalPaslon2 = $query->sum("paslon2");
+                $totalTidakSah = $query->sum("tidak_sah");
+                $totalAll = $totalPaslon1 + $totalPaslon2 + $totalTidakSah;
+            } else if ($isPaslon2) {
+                $query = Tps::join('saksis', 'saksis.id', '=', 'tps.saksi_id')
+                    ->select('tps.*', 'saksis.name as saksi_name', 'saksis.phone');
+                $tps = $query->get();
+                $totalPaslon1 = $query->sum("paslon1");
+                $totalPaslon2 = $query->sum("paslon2");
+                $totalTidakSah = $query->sum("tidak_sah");
+                $totalAll = $totalPaslon1 + $totalPaslon2 + $totalTidakSah;
+            } else if ($isTidakSah) {
+                $query = Tps::join('saksis', 'saksis.id', '=', 'tps.saksi_id')
+                    ->select('tps.*', 'saksis.name as saksi_name', 'saksis.phone');
+                $tps = $query->get();
+                $totalPaslon1 = $query->sum("paslon1");
+                $totalPaslon2 = $query->sum("paslon2");
+                $totalTidakSah = $query->sum("tidak_sah");
+                $totalAll = $totalPaslon1 + $totalPaslon2 + $totalTidakSah;
+            }
+        }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Data received successfully',
+            'data' => $tps,
+            'totalPaslon1' => $totalPaslon1,
+            'totalPaslon2' => $totalPaslon2,
+            'totalTidakSah' => $totalTidakSah,
+            'totalAll' => $totalAll,
+        ]);
+    }
+
+    public function calcTpsFirst()
+    {
+        // Return a JSON response
+
+        $totalPaslon1 = 0;
+        $totalPaslon2 = 0;
+        $totalTidakSah = 0;
+        $totalAll = 0;
+
+        $query = Tps::join('saksis', 'saksis.id', '=', 'tps.saksi_id')
+            ->select('tps.*', 'saksis.name as saksi_name', 'saksis.phone');
+
+        $tps  = $query->get();
+
+        $totalPaslon1 = $query->sum("paslon1");
+        $totalPaslon2 = $query->sum("paslon2");
+        $totalTidakSah = $query->sum("tidak_sah");
+        $totalAll = $totalPaslon1 + $totalPaslon2 + $totalTidakSah;
+        return response()->json([
+            'success' => true,
+            'message' => 'Data received successfully',
+            'data' => $tps,
+            'totalPaslon1' => $totalPaslon1,
+            'totalPaslon2' => $totalPaslon2,
+            'totalTidakSah' => $totalTidakSah,
+            'totalAll' => $totalAll,
+
+        ]);
     }
 }
