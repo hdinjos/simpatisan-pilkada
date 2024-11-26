@@ -282,7 +282,7 @@
                                         required class="form-control" placeholder="Nama TPS">
                                 </div>
                                 <div class="col-12 mb-1 d-flex gap-3" style="text-align: right">
-                                    <a href="/koordinators//tps" class="btn btn-primary w-50">Kembali</a>
+                                    <a href="/saksi/{{ $id }}" class="btn btn-primary w-50">Kembali</a>
                                     <button type="submit" class="btn btn-primary w-50">Simpan</button>
                                 </div>
                             </div>

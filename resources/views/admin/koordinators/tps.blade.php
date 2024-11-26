@@ -58,11 +58,15 @@
                         <thead>
                             <tr>
                                 <th class="border-bottom p-3">Nama TPS</th>
+                                <th class="border-bottom p-3">Kecamatan</th>
+                                <th class="border-bottom p-3">Kelurahan</th>
                                 <th class="border-bottom p-3" style="min-width: 220px;">Paslon 1</th>
                                 <th class="border-bottom p-3" style="min-width: 200px;">Paslon 2
                                 </th>
 
                                 <th class="border-bottom p-3" style="min-width: 200px;">Tidak Sah
+                                </th>
+                                <th class="border-bottom p-3" style="min-width: 200px;">Saksi
                                 </th>
 
                                 {{-- <td class="p-3">
@@ -81,10 +85,13 @@
                         <tbody>
                             @foreach ($tps as $t)
                                 <tr>
-                                    <th class="p-3">{{ $t->nama_tps }}</th>
+                                    <td class="p-3">{{ $t->nama_tps }}</td>
+                                    <td class="p-3">{{ $t->kecamatan }}</td>
+                                    <td class="p-3">{{ $t->kelurahan }}</td>
                                     <td class="p-3">{{ $t->paslon1 }} Suara</td>
                                     <td class="p-3">{{ $t->paslon2 }} Suara</td>
                                     <td class="p-3">{{ $t->tidak_sah }} Suara</td>
+                                    <td class="p-3">{{ $t->saksi_name }}</td>
                                     {{-- <td class="p-3">
                                         <img width="50px" height="50px" src="{{ asset('storage/foto/' . $u->image) }}" />
 
