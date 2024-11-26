@@ -37,18 +37,7 @@
         <div class="d-md-flex justify-content-between">
             <div>
                 <h5 class="mb-0">Monitoring TPS</h5>
-
-                {{-- <nav aria-label="breadcrumb" class="d-inline-block mt-1">
-                <ul class="breadcrumb breadcrumb-muted bg-transparent rounded mb-0 p-0">
-                    <li class="breadcrumb-item text-capitalize"><a href="index.html">Landrick</a></li>
-                    <li class="breadcrumb-item text-capitalize active" aria-current="page">Shop</li>
-                </ul>
-            </nav> --}}
             </div>
-
-            {{-- <div class="mt-4 mt-sm-0">
-                <a href="/admins/koordinators/create" class="btn btn-primary">Tambah</a>
-            </div> --}}
         </div>
 
         <div class="card">
@@ -102,6 +91,11 @@
                     <button class="btn btn-primary">Hitung</button>
                 </div>
 
+                <div class="d-md-flex justify-content-between">
+                    <div>
+                        <h5 class="mb-0">Total Perhitungan Suara</h5>
+                    </div>
+                </div>
                 <div class="table-responsive border rounded">
                     <table class="table table-center bg-white mb-0">
                         <thead>
@@ -134,7 +128,7 @@
                                 <th class="border-bottom p-3">Kecamatan</th>
                                 <th class="border-bottom p-3">Kelurahan</th>
                                 <th class="border-bottom p-3" style="min-width: 220px;">Paslon 1</th>
-                                <th class="border-bottom p-3" style="min-width: 200px;">Paslon 2
+                                <th>Paslon 2
                                 </th>
 
                                 <th class="border-bottom p-3" style="min-width: 200px;">Tidak Sah
@@ -174,7 +168,12 @@
             </div>
             <!--end col-->
         </div> --}}
-        <div class="card mt-3">
+        <div class="d-md-flex justify-content-between mt-3">
+            <div>
+                <h5 class="mb-0">Detail Data Suara</h5>
+            </div>
+        </div>
+        <div class="card">
             <div class="card-body">
 
                 <div class="row">
@@ -187,6 +186,17 @@
                                     <th>Nama Tps</th>
                                     <th>Kecamatan</th>
                                     <th>Kelurahan</th>
+                                    <th>Paslon 1</th>
+                                    <th>Paslon 2
+                                    </th>
+                                    <th>Tidak Sah
+                                    </th>
+                                    <th>Saksi
+                                    </th>
+                                    <th>No. HP Saksi
+                                    </th>
+                                    <th>Aksi
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -227,6 +237,8 @@
 
         }
 
+
+
         $('#title').html('Koordinator Partisipan');
 
         // Fetch data when the page loads
@@ -253,10 +265,19 @@
                         // Insert new rows into the DataTable
                         data.data.forEach(item => {
                             const row = document.createElement('tr');
+
                             row.innerHTML = `
                                  <td>${item.nama_tps}</td>
                                 <td>${item.kecamatan}</td>
                                 <td>${item.kelurahan}</td>
+                                <td>${item.paslon1}</td>
+                                <td>${item.paslon2}</td>
+                                <td>${item.tidak_sah}</td>
+                                <td>${item.saksi_name}</td>
+                                <td>${item.phone}</td>
+                                <td class="p-3">
+                                    <a target="_blank" href="/storage/tps/${item.c1}" class="btn btn-sm btn-primary">Lihat C1</a>
+                                </td>
                             `;
                             tableBody.appendChild(row);
                         });
@@ -312,9 +333,17 @@
                         data.data.forEach(item => {
                             const row = document.createElement('tr');
                             row.innerHTML = `
-                        <td>${item.nama_tps}</td>
-                        <td>${item.kecamatan}</td>
-                        <td>${item.kelurahan}</td>
+                                <td>${item.nama_tps}</td>
+                                <td>${item.kecamatan}</td>
+                                <td>${item.kelurahan}</td>
+                                <td>${item.paslon1}</td>
+                                <td>${item.paslon2}</td>
+                                <td>${item.tidak_sah}</td>
+                                <td>${item.saksi_name}</td>
+                                <td>${item.phone}</td>
+                                <td class="p-3">
+                                    <a target="_blank" href="/storage/tps/${item.c1}" class="btn btn-sm btn-primary">Lihat C1</a>
+                                </td>
                     `;
                             tableBody.appendChild(row);
                         });
