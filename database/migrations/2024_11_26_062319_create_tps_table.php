@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('tidak_sah');
             $table->string('c1');
             $table->bigInteger('saksi_id')->unsigned()->index(); // this is working
-            $table->foreign('saksi_id')->references('id')->on('saksi')->onDelete('cascade');
+            $table->foreign('saksi_id')->references('id')->on('saksis')->onDelete('cascade');
             $table->timestamps();
         });
     }

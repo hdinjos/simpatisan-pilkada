@@ -18,6 +18,8 @@ class Tps extends Model
      */
     protected $fillable = [
         'nama_tps',
+        'kecamatan',
+        'kelurahan',
         'paslon1',
         'paslon2',
         'tidak_sah',

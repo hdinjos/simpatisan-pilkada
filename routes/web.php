@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TpsController;
 use App\Http\Middleware\CheckUserRoleAdmin;
 use App\Http\Middleware\CheckUserRoleKoordinator;
+use App\Http\Controllers\SaksiController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,6 +34,15 @@ Route::resource('koordinators', KoordinatorController::class)->middleware(CheckU
 Route::prefix('koordinators/{koordinator}')->group(function () {
     Route::resource('tps', TpsController::class);
 });
+
+
+//Saksi
+
+Route::get('saksi', [SaksiController::class, 'registerForm']);
+Route::post('saksi', [SaksiController::class, 'register']);
+Route::get('saksi/{id}', [SaksiController::class, 'index']);
+Route::get('saksi/{id}/create', [SaksiController::class, 'create']);
+Route::post('saksi/{id}/create', [SaksiController::class, 'store']);
 
 
 
