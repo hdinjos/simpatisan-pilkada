@@ -85,7 +85,7 @@
         }
 
         .custom-card {
-            border: 1px solid #FEDE58;
+            /* border: 1px solid #FEDE58; */
             border-radius: 10px;
         }
 
@@ -102,6 +102,31 @@
         .paslon {
             padding: 10px 30px;
 
+        }
+
+        .number-input {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .number-input button {
+            padding: 5px 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .number-input input {
+            width: 75px;
+            text-align: center;
+            font-size: 16px;
+            margin: 0 5px;
+        }
+
+        input[type='number']::-webkit-inner-spin-button,
+        input[type='number']::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
         }
     </style>
 
@@ -120,32 +145,7 @@
                     </div>
                 </div>
 
-                {{-- <form method="POST" action="/auth/koordinators/logout" class="text-center">
-                    @csrf
-                   
-                    <li class="list-inline-item mb-0 ms-1">
-                        <div class="dropdown dropdown-primary">
-                            <a href="#" class="btn btn-outline-primary" data-bs-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                <i class="ti ti-menu-2"></i> Menu
-                            </a>
 
-                            <div class="dropdown-menu dd-menu dropdown-menu-end bg-black shadow menu mt-3 py-3"
-                                style="min-width: 200px">
-
-                                <a class="dropdown-item text-white" href="/koordinators"><span
-                                        class="mb-0 d-inline-block me-1"><i class="ti ti-home"></i></span>
-                                    Home</a>
-                                <a class="dropdown-item text-white" href="/koordinators//tps"><span
-                                        class="mb-0 d-inline-block me-1"><i class="ti ti-box"></i></span>
-                                    TPS</a>
-                                <button type="submit" class="dropdown-item text-white"><span
-                                        class="mb-0 d-inline-block me-1"><i class="ti ti-logout"></i></span>
-                                    Logout</button>
-                            </div>
-                        </div>
-                    </li>
-                </form> --}}
 
             </div>
             <div id="dateUser" class="col-12 text-center">
@@ -194,48 +194,81 @@
         </div> --}}
         <div>
 
-            @if (count($tps) == 0)
-                {{-- expr --}}
-
-                <div class="row">
-                    <div class="col-12 px-4 d-flex justify-content-end">
-                        <a href="/saksi/{{ $id }}/create" class="btn btn-primary mb-3">Tambah</a>
-                    </div>
-                </div>
-            @endif
             <div class="row mb-1">
-                <div class="col-12 px-4">Data Hasil Perolehan Suara</div>
+                <div class="col-12 px-4">Tambah Hasil Perolehan Suara</div>
             </div>
 
 
             <div class="row">
-                @foreach ($tps as $t)
-                    <div class="col-12 px-4 mb-3">
-                        <div class="custom-card">
-                            <div class="text-center border-custom-card tps">{{ $t->nama_tps }}</div>
-                            <div class="border-custom-card d-flex justify-content-between paslon">
-                                <div>Paslon 1</div>
-                                <div>{{ $t->paslon1 }}</div>
+                <div class="col-12 px-4">
+                    <div class="custom-card">
+                        <form method="POST" action="/saksi/{{ $id }}/update/{{ $tps_id }}"
+                            enctype="multipart/form-data">
+                            @csrf
+                            <div class="row text-center">
+                                <div class="col-12 mb-3">
+                                    <label class="form-label">Nama TPS<span class="text-danger">*</span></label>
+                                    <input name="nama_tps" id="name" value="{{ $tps->nama_tps }}" type="text"
+                                        required class="form-control" placeholder="Nama TPS">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Kecamatan <span class="text-danger">*</span></label>
+                                    <select required name="kecamatan" class="form-control">
+                                        @foreach ($optionKecs as $kec)
+                                            <option @if ($kec == $tps->kecamatan) selected @endif
+                                                value="{{ $kec }}">{{ $kec }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label class="form-label">Kelurahan/Desa<span class="text-danger">*</span></label>
+                                    <input name="kelurahan" id="name" value="{{ $tps->kelurahan }}" type="text"
+                                        required class="form-control" placeholder="Kelurahan/Desa">
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label class="form-label">Jumlah Suara Paslon 1<span
+                                            class="text-danger">*</span></label>
+                                    <div class="col-12 number-input">
+                                        <button type="button" class="btn btn-danger decrement">-</button>
+                                        <input class="form-control number" value="{{ $tps->paslon1 }}" type="number"
+                                            name="paslon1" id="paslon1" value="0" min="0" readonly>
+                                        <button type="button" class="btn btn-success increment">+</button>
+                                    </div>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label class="form-label">Jumlah Suara Paslon 2<span
+                                            class="text-danger">*</span></label>
+                                    <div class="col-12 number-input">
+                                        <button type="button" class="btn btn-danger decrement">-</button>
+                                        <input class="form-control number" value="{{ $tps->paslon2 }}" type="number"
+                                            name="paslon2" id="paslon2" value="0" min="0" readonly>
+                                        <button type="button" class="btn btn-success increment">+</button>
+                                    </div>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label class="form-label">Jumlah Suara Tidak Sah<span
+                                            class="text-danger">*</span></label>
+                                    <div class="col-12 number-input">
+                                        <button type="button" class="btn btn-danger decrement">-</button>
+                                        <input class="form-control number" value="{{ $tps->tidak_sah }}"
+                                            type="number" name="tidak_sah" id="tidak_sah" value="0"
+                                            min="0" readonly>
+                                        <button type="button" class="btn btn-success increment">+</button>
+                                    </div>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label class="form-label">Foto C1<span class="text-danger">*</span></label>
+                                    <input name="c1" id="name" type="file" accept=".png, .jpeg, .jpg"
+                                        required class="form-control" placeholder="Nama TPS">
+                                </div>
+                                <div class="col-12 mb-1 d-flex gap-3" style="text-align: right">
+                                    <a href="/saksi/{{ $id }}" class="btn btn-primary w-50">Kembali</a>
+                                    <button type="submit" class="btn btn-primary w-50">Simpan</button>
+                                </div>
                             </div>
-                            <div class="border-custom-card d-flex justify-content-between paslon">
-                                <div>Paslon 2</div>
-                                <div>{{ $t->paslon2 }}</div>
-                            </div>
-                            <div class="border-custom-card d-flex justify-content-between paslon">
-                                <div>Tidak Sah</div>
-                                <div>{{ $t->tidak_sah }}</div>
-                            </div>
-                            <div class=" d-flex justify-content-between paslon gap-3">
-                                <a target="_blank" href="{{ asset('storage/tps/' . $t->c1) }}"
-                                    class="btn btn-primary w-100">Lihat
-                                    C1</a>
-                                <a target="_blank" href="/saksi/{{ $id }}/edit/{{ $t->id }}"
-                                    class="btn btn-primary w-100">Edit
-                                </a>
-                            </div>
-                        </div>
+                        </form>
                     </div>
-                @endforeach
+                </div>
             </div>
 
 
@@ -256,23 +289,15 @@
 
         </div>
 
-        <a href="/koordinators/create" class="p-4 btn btn-icon btn-pills btn-primary mt-2 btn-tambah">
-            <i class="uil uil-0-plus"></i>
-            {{-- <svg
-                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="feather feather-gitlab icons">
-                <path
-                    d="M22.65 14.39L12 22.13 1.35 14.39a.84.84 0 0 1-.3-.94l1.22-3.78 2.44-7.51A.42.42 0 0 1 4.82 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.49h8.1l2.44-7.51A.42.42 0 0 1 18.6 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.51L23 13.45a.84.84 0 0 1-.35.94z">
-                </path>
-            </svg> --}}
-        </a>
+
 
     </div>
     <!-- Offcanvas End -->
 
     <!-- javascript -->
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
     <!-- simplebar -->
     {{-- <script src="{{ asset('js/simplebar.min.js') }}"></script> --}}
     <!-- Icons -->
@@ -298,6 +323,32 @@
         @if (\Session::has('success'))
             Swal.fire("Tambah Data Berhasil");
         @endif
+
+        $('#title').html('Tambah TPS')
+
+        $(document).ready(function() {
+            const $input = $('.number');
+
+            // Handle increment
+            $('.increment').on('click', function() {
+                const $input = $(this).siblings('.number');
+                const max = parseInt($input.attr('max'));
+                let value = parseInt($input.val()) || 0;
+                if (value < max || isNaN(max)) {
+                    $input.val(value + 1);
+                }
+            });
+
+            // Handle decrement
+            $('.decrement').on('click', function() {
+                const $input = $(this).siblings('.number');
+                const min = parseInt($input.attr('min'));
+                let value = parseInt($input.val()) || 0;
+                if (value > min || isNaN(min)) {
+                    $input.val(value - 1);
+                }
+            });
+        });
     </script>
 
 </body>
