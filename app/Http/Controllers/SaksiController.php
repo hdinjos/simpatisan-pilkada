@@ -22,7 +22,7 @@ class SaksiController extends Controller
             $findNik = Saksi::where("nik", $nik)->first();
 
             if ($findNik != null) {
-                return redirect("/saksi")->with('nik_terdaftar', "NIK Sudah Terdaftar menjadi Saksi");
+                return redirect("/saksi/" . $findNik->id);
             }
         }
 

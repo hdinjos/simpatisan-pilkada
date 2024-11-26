@@ -1,5 +1,12 @@
 @extends('admin.layout.main')
 @section('admin-content')
+    <!-- Loader -->
+    <div id="isLoader">
+
+    </div>
+
+
+    <!-- Loader -->
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -237,6 +244,8 @@
 
         }
 
+        const isLoader = document.querySelector("#isLoader")
+
 
 
         $('#title').html('Koordinator Partisipan');
@@ -244,10 +253,21 @@
         // Fetch data when the page loads
         document.addEventListener('DOMContentLoaded', function() {
             // Send a GET request to the Laravel backend to fetch data
+            isLoader.innerHTML = `
+                            <div id="preloader">
+                                <div id="status">
+                                    <div class="spinner">
+                                        <div class="double-bounce1"></div>
+                                        <div class="double-bounce2"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        `
             fetch('/admins/tps-first')
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
+
                         // Clear the current table data
                         const tableBody = document.querySelector('#dataTable tbody');
                         const totalSuara = document.querySelector('#totalSuara');
@@ -284,6 +304,7 @@
 
                         // Initialize DataTable after inserting rows
                         $('#dataTable').DataTable();
+                        isLoader.innerHTML = '';
                     }
                 })
                 .catch((error) => {
@@ -303,6 +324,18 @@
                 suara: suaraVal.value
             };
 
+            // Clear the current table data
+            isLoader.innerHTML = `
+                        <div id="preloader">
+                            <div id="status">
+                                <div class="spinner">
+                                    <div class="double-bounce1"></div>
+                                    <div class="double-bounce2"></div>
+                                </div>
+                            </div>
+                        </div>
+                    `
+
             await fetch('/admins/tps', {
                     method: 'POST',
                     headers: {
@@ -315,7 +348,7 @@
                 .then(data => {
 
                     if (data.success) {
-                        // Clear the current table data
+
 
                         const tableBody = document.querySelector('#dataTable tbody');
                         tableBody.innerHTML = ''; // Clear previous rows
@@ -350,6 +383,7 @@
 
                         // Reinitialize DataTable to refresh it
                         $('#dataTable').DataTable();
+                        isLoader.innerHTML = '';
                     }
                 })
                 .catch((error) => {

@@ -195,21 +195,25 @@ class AdminController extends Controller
                     ->select('tps.*', 'saksis.name as saksi_name', 'saksis.phone');
                 $tps = $query->get();
                 $totalPaslon1 = $query->sum("paslon1");
-                $totalPaslon2 = $query->sum("paslon2");
-                $totalTidakSah = $query->sum("tidak_sah");
+                $totalPaslon2 = 0;
+                $totalTidakSah = 0;
                 $totalAll = $totalPaslon1 + $totalPaslon2 + $totalTidakSah;
             } else if ($isPaslon2) {
-                $tps = Tps::where('kecamatan', $kecamatan)
+                $query = Tps::where('kecamatan', $kecamatan)
                     ->join('saksis', 'saksis.id', '=', 'tps.saksi_id')
-                    ->select('tps.*', 'saksis.name as saksi_name', 'saksis.phone')
-                    ->get();
+                    ->select('tps.*', 'saksis.name as saksi_name', 'saksis.phone');
+                $tps = $query->get();
+                $totalPaslon1 = 0;
+                $totalPaslon2 = $query->sum("paslon2");
+                $totalTidakSah = 0;
+                $totalAll = $totalPaslon1 + $totalPaslon2 + $totalTidakSah;
             } else if ($isTidakSah) {
                 $query = Tps::where('kecamatan', $kecamatan)
                     ->join('saksis', 'saksis.id', '=', 'tps.saksi_id')
                     ->select('tps.*', 'saksis.name as saksi_name', 'saksis.phone');
                 $tps = $query->get();
-                $totalPaslon1 = $query->sum("paslon1");
-                $totalPaslon2 = $query->sum("paslon2");
+                $totalPaslon1 = 0;
+                $totalPaslon2 = 0;
                 $totalTidakSah = $query->sum("tidak_sah");
                 $totalAll = $totalPaslon1 + $totalPaslon2 + $totalTidakSah;
             }
@@ -228,23 +232,23 @@ class AdminController extends Controller
                     ->select('tps.*', 'saksis.name as saksi_name', 'saksis.phone');
                 $tps = $query->get();
                 $totalPaslon1 = $query->sum("paslon1");
-                $totalPaslon2 = $query->sum("paslon2");
-                $totalTidakSah = $query->sum("tidak_sah");
+                $totalPaslon2 = 0;
+                $totalTidakSah = 0;
                 $totalAll = $totalPaslon1 + $totalPaslon2 + $totalTidakSah;
             } else if ($isPaslon2) {
                 $query = Tps::join('saksis', 'saksis.id', '=', 'tps.saksi_id')
                     ->select('tps.*', 'saksis.name as saksi_name', 'saksis.phone');
                 $tps = $query->get();
-                $totalPaslon1 = $query->sum("paslon1");
+                $totalPaslon1 = 0;
                 $totalPaslon2 = $query->sum("paslon2");
-                $totalTidakSah = $query->sum("tidak_sah");
+                $totalTidakSah = 0;
                 $totalAll = $totalPaslon1 + $totalPaslon2 + $totalTidakSah;
             } else if ($isTidakSah) {
                 $query = Tps::join('saksis', 'saksis.id', '=', 'tps.saksi_id')
                     ->select('tps.*', 'saksis.name as saksi_name', 'saksis.phone');
                 $tps = $query->get();
-                $totalPaslon1 = $query->sum("paslon1");
-                $totalPaslon2 = $query->sum("paslon2");
+                $totalPaslon1 = 0;
+                $totalPaslon2 = 0;
                 $totalTidakSah = $query->sum("tidak_sah");
                 $totalAll = $totalPaslon1 + $totalPaslon2 + $totalTidakSah;
             }

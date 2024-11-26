@@ -87,9 +87,9 @@
             <div class="d-flex justify-content-center mt-2">
                 <button class="text-black btn btn-primary w-100">Daftar</button>
             </div>
-            <div class="d-flex justify-content-center mt-5">
+            {{-- <div class="d-flex justify-content-center mt-5">
                 <a href="/ceknik/saksi" class="btn btn-danger w-100">Jika NIK Sudah Terdaftar</a>
-            </div>
+            </div> --}}
         </form>
 
     </div>
