@@ -62,8 +62,8 @@
         
         </div> --}}
         <h3 class="text-primary">Selamat Datang </h3>
-        <p>Isi Data Saksi</p>
-        <form class="row mb-3" method="POST" action="/saksi">
+        <p>Pencarian NIK Sudah Terdaftar</p>
+        <form class="row mb-3" method="POST" action="/ceknik/saksi">
             @csrf
             <div class="col-12">
                 <div class="mb-3">
@@ -71,24 +71,13 @@
                     <input required name="nik" type="number" class="form-control" placeholder="NIK :">
                 </div>
             </div>
-            <div class="col-12">
-                <div class="mb-3">
-                    <label class="form-label">Nama <span class="text-danger">*</span></label>
-                    <input required name="name" type="text" class="form-control" placeholder="Name :">
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="mb-3">
-                    <label class="form-label">Nomor HP <span class="text-danger">*</span></label>
-                    <input required name="phone" type="number" class="form-control" placeholder="Nomor HP :">
-                </div>
-            </div>
+
 
             <div class="d-flex justify-content-center mt-2">
-                <button class="text-black btn btn-primary w-100">Daftar</button>
+                <button class="text-black btn btn-primary w-100">Submit</button>
             </div>
             <div class="d-flex justify-content-center mt-5">
-                <a href="/ceknik/saksi" class="btn btn-danger w-100">Jika NIK Sudah Terdaftar</a>
+                <a href="/saksi" class="btn btn-danger w-100">Kembali</a>
             </div>
         </form>
 
@@ -98,8 +87,8 @@
     <!-- javascript -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        @if (\Session::has('nik_terdaftar'))
-            Swal.fire("NIK sudah terdaftar");
+        @if (\Session::has('nik_tidak_ketemu'))
+            Swal.fire("NIK Belum Terdaftar");
         @endif
     </script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>

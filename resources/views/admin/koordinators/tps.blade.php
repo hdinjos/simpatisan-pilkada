@@ -68,6 +68,8 @@
                                 </th>
                                 <th class="border-bottom p-3" style="min-width: 200px;">Saksi
                                 </th>
+                                <th class="border-bottom p-3" style="min-width: 200px;">No. HP Saksi
+                                </th>
 
                                 {{-- <td class="p-3">
                                     <img width="50px" height="50px" src="{{ asset('storage/foto/' . $u->image) }}" />
@@ -92,6 +94,7 @@
                                     <td class="p-3">{{ $t->paslon2 }} Suara</td>
                                     <td class="p-3">{{ $t->tidak_sah }} Suara</td>
                                     <td class="p-3">{{ $t->saksi_name }}</td>
+                                    <td class="p-3">{{ $t->phone }}</td>
                                     {{-- <td class="p-3">
                                         <img width="50px" height="50px" src="{{ asset('storage/foto/' . $u->image) }}" />
 

@@ -46,3 +46,5 @@ Route::get('saksi/{id}/create', [SaksiController::class, 'create']);
 Route::post('saksi/{id}/create', [SaksiController::class, 'store']);
 Route::get('saksi/{id}/edit/{tps_id}', [SaksiController::class, 'edit']);
 Route::post('saksi/{id}/update/{tps_id}', [SaksiController::class, 'update']);
+Route::get('ceknik/saksi', [SaksiController::class, 'ceknikForm']);
+Route::post('ceknik/saksi', [SaksiController::class, 'ceknik']);

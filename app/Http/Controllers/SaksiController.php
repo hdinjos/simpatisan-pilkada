@@ -14,9 +14,17 @@ class SaksiController extends Controller
     }
     public function register(Request $request)
     {
+
         $nik = $request->nik;
         $name = $request->name;
         $phone = $request->phone;
+        if ($nik) {
+            $findNik = Saksi::where("nik", $nik)->first();
+
+            if ($findNik != null) {
+                return redirect("/saksi")->with('nik_terdaftar', "NIK Sudah Terdaftar menjadi Saksi");
+            }
+        }
 
         if ($nik && $name && $phone) {
             $data = Saksi::create([
@@ -157,5 +165,23 @@ class SaksiController extends Controller
 
             return redirect('/saksi/' . $id)->with('failed', 'Tambah Data Berhasil');
         }
+    }
+
+    public function ceknikForm()
+    {
+        return view("saksi/ceknik");
+    }
+    public function ceknik(Request $request)
+    {
+        if ($request->nik) {
+            $findNik = Saksi::where("nik", $request->nik)->first();
+
+            if ($findNik != null) {
+                return redirect("/saksi/" . $findNik->id)->with('nik_terdaftar', "NIK Sudah Terdaftar menjadi Saksi");
+            } else {
+                return redirect("/ceknik/saksi")->with('nik_tidak_ketemu', "NIK Belum Terdaftar");
+            }
+        }
+        return redirect("/ceknik/saksi")->with('nik_tidak_ketemu', "NIK Belum Terdaftar");
     }
 }

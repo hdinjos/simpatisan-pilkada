@@ -23,7 +23,7 @@ class AdminController extends Controller
     public function indexTps()
     {
         $tps = Tps::join('saksis', 'saksis.id', '=', 'tps.saksi_id')
-            ->select('tps.*', 'saksis.name as saksi_name')
+            ->select('tps.*', 'saksis.name as saksi_name', 'saksis.phone')
             ->get();
         return view('admin/koordinators/tps', compact('tps'));
     }
