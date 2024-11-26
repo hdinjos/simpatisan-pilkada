@@ -31,13 +31,14 @@ Route::post('auth/koordinators/login', [AuthController::class, 'loginKoordinator
 Route::post('auth/koordinators/logout', [AuthController::class, 'koordinatorLogout'])->middleware(CheckUserRoleKoordinator::class);
 
 Route::resource('koordinators', KoordinatorController::class)->middleware(CheckUserRoleKoordinator::class);
-Route::prefix('koordinators/{koordinator}')->group(function () {
-    Route::resource('tps', TpsController::class);
-});
+
+//hide sementara
+// Route::prefix('koordinators/{koordinator}')->group(function () {
+//     Route::resource('tps', TpsController::class);
+// });
 
 
 //Saksi
-
 Route::get('saksi', [SaksiController::class, 'registerForm']);
 Route::post('saksi', [SaksiController::class, 'register']);
 Route::get('saksi/{id}', [SaksiController::class, 'index']);
@@ -45,8 +46,3 @@ Route::get('saksi/{id}/create', [SaksiController::class, 'create']);
 Route::post('saksi/{id}/create', [SaksiController::class, 'store']);
 Route::get('saksi/{id}/edit/{tps_id}', [SaksiController::class, 'edit']);
 Route::post('saksi/{id}/update/{tps_id}', [SaksiController::class, 'update']);
-
-
-
-
-// Route::post('auth/koordinators/logout', [AuthController::class, 'koordinatorLogout']);

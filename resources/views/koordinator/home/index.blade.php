@@ -122,10 +122,10 @@
                                 </a> --}}
 
                                 {{-- <div class="dropdown-divider border-top"></div>  --}}
-                                <a class="dropdown-item text-white"
+                                {{-- <a class="dropdown-item text-white"
                                     href="/koordinators/{{ Auth::user()->id }}/tps"><span
                                         class="mb-0 d-inline-block me-1"><i class="ti ti-box"></i></span>
-                                    TPS</a>
+                                    TPS</a> --}}
                                 <button type="submit" class="dropdown-item text-white"><span
                                         class="mb-0 d-inline-block me-1"><i class="ti ti-logout"></i></span>
                                     Logout</button>
